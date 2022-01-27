@@ -26,30 +26,25 @@
         <H1>CLOCKER</H1>
     </div>
 	<div id="summary">
-    <!-- liczby użytkowników, 
-    suma zaraportowanych godzin w tygodniu, 
-    miesiącu, 
-    roku, 
-    zawsze. -->
         <div class="summ">
             <img src="people.jpg" alt="People">
             <p>Ilość pracowników: <?php echo $summary->get_people() ?></p>
         </div>
         <div class="summ">
         <img src="week.jpg" alt="Week">
-            <p>W tym tygodniu przepracowaliśmy <?php $summary->get_week() ?> godzin</p>
+            <p>W tym tygodniu przepracowaliśmy <?php echo $summary->get_week() ?> godzin</p>
         </div>
         <div class="summ">
         <img src="month.jpg" alt="Month">
-            <p>W tym miesiącu przepracowaliśmy <?php $summary->get_month() ?> godzin</p>
+            <p>W tym miesiącu przepracowaliśmy <?php echo $summary->get_month() ?> godzin</p>
         </div>
         <div class="summ">
         <img src="year.jpg" alt="Year">
-            <p>W tym roku przepracowaliśmy <?php $summary->get_year() ?> godzin</p>
+            <p>W tym roku przepracowaliśmy <?php echo $summary->get_year() ?> godzin</p>
         </div>
         <div class="summ">
         <img src="all.jpg" alt="All">
-            <p>Od zarania dziejów przepracowaliśmy <?php $summary->get_all() ?> godzin</p>
+            <p>Od zarania dziejów przepracowaliśmy <?php echo $summary->get_all() ?> godzin</p>
         </div>
     </div>
 </body>

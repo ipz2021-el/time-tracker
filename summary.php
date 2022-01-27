@@ -15,6 +15,9 @@ class Summary {
 
   // people
   function get_people() {
+    return $this->people;
+  }
+  function set_people() {
     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
     if ($mysqli -> connect_errno) {
       echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
@@ -25,22 +28,32 @@ class Summary {
     if (!$result) {
       throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
     }
-    // mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownik;");
     if ($row = $result->fetch_assoc()) {
       $this->people = $row['users'];
     }
     $result -> free_result();
     $mysqli -> close();
-    return $this->people;
-  }
-  function set_people() {
-    $this->people = 0;
   }
   // week
   function get_week() {
     return $this->week;
   }
   function set_week() {
+    // $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    // if ($mysqli -> connect_errno) {
+    //   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    //   exit();
+    // }
+    // $query = "SELECT czas_start, czas_stop FROM czas_pracy;";
+    // $result = $mysqli->query($query);
+    // if (!$result) {
+    //   throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+    // }
+    // if ($row = $result->fetch_assoc()) {
+    //   $this->people = $row['users'];
+    // }
+    // $result -> free_result();
+    // $mysqli -> close();
     $this->week = 0;
   }
   // month
@@ -48,6 +61,21 @@ class Summary {
     return $this->month;
   }
   function set_month() {
+    // $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    // if ($mysqli -> connect_errno) {
+    //   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    //   exit();
+    // }
+    // $query = "SELECT czas_start, czas_stop FROM czas_pracy;";
+    // $result = $mysqli->query($query);
+    // if (!$result) {
+    //   throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+    // }
+    // if ($row = $result->fetch_assoc()) {
+    //   $this->people = $row['users'];
+    // }
+    // $result -> free_result();
+    // $mysqli -> close();
     $this->month = 0;
   }
   // year
@@ -55,6 +83,21 @@ class Summary {
     return $this->year;
   }
   function set_year() {
+    // $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    // if ($mysqli -> connect_errno) {
+    //   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    //   exit();
+    // }
+    // $query = "SELECT czas_start, czas_stop FROM czas_pracy;";
+    // $result = $mysqli->query($query);
+    // if (!$result) {
+    //   throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+    // }
+    // if ($row = $result->fetch_assoc()) {
+    //   $this->people = $row['users'];
+    // }
+    // $result -> free_result();
+    // $mysqli -> close();
     $this->year = 0;
   }
   // all
@@ -62,6 +105,22 @@ class Summary {
     return $this->all;
   }
   function set_all() {
+    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    if ($mysqli -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+      exit();
+    }
+    $query = "SELECT czas_start, czas_stop FROM czas_pracy;";
+    $result = $mysqli->query($query);
+    while ($row = $result->fetch_assoc()) {
+      echo 'start' . $row["czas_stop"];
+      echo 'stop' . $row["czas_start"];
+      echo $row["czas_stop"] - $row["czas_start"];
+    }
+    
+    
+    $result -> free_result();
+    $mysqli -> close();
     $this->all = 0;
   }
 
