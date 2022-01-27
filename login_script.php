@@ -59,9 +59,9 @@
                     }
                     if ($poprawne_dane == true)
                     {
-                        if(file_exists("privat.php")) 
+                        if(file_exists("private.php"))
                         {
-                            include 'privat.php';
+                            include 'private.php';
                         }
                         echo "Zalogowano poprawnie";
                     }
