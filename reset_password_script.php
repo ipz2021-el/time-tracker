@@ -10,6 +10,7 @@
         <?php
                 $poprawne_dane = false;
                 $email = $_GET['email_'];
+                echo $email;
 
                 $dsn = 'mysql:dbname=clock;host=46.41.140.79;port=3306;charset=utf8';
                 $username = 'clockadmin';
@@ -29,6 +30,7 @@
                 if ($connection == true)
                 {   
                     $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
+                    
                     $sql = "SELECT email, haslo FROM uzytkownik";
 
                     if($conn == false)
@@ -51,19 +53,13 @@
                                 if ($temp_email == $email)
                                 {
                                     $haslo_temp = rand(100000,999999);
-
-                                    $sql_temp = "UPDATE uzytkownik SET haslo = $haslo_temp WHERE email = $email";
-
-                                    if(mysqli_query($conn, $sql))
+                                    $sql_temp = "UPDATE uzytkownik SET haslo = '$haslo_temp' WHERE email = '$email'";
+                                    if(mysqli_query($conn, $sql_temp))
                                     {
                                         echo "Zresetowano haslo";
-                                        include 'login.php';
-                                        mail("$email","To jest haslo tymczasowe",$haslo_temp);
+                                        mail("$email","To jest haslo tymczasowe", "$haslo_temp");
+                                        $poprawne_dane = true;
                                     }
-                                }
-                                else
-                                {
-                                    $poprawne_dane = true;
                                 }
                             }
                         }
@@ -74,7 +70,6 @@
                         {
                             include 'index.php';
                         }
-                        echo "Bledny email";
                     }
                     mysqli_close($conn);
                 }

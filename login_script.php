@@ -49,7 +49,7 @@
                             while($row = mysqli_fetch_array($wynik))
                             {
                                 $temp_email = $row['email'];
-                                $temo_haslo = $row['haslo']; 
+                                $temp_haslo = $row['haslo'];
                                 if (($temp_email == $email) and ($temo_haslo  == $haslo))
                                 {
                                     $poprawne_dane = true;
@@ -62,8 +62,16 @@
                         if(file_exists("private.php"))
                         {
                             include 'private.php';
+                            echo "Zalogowano poprawnie";
                         }
-                        echo "Zalogowano poprawnie";
+                    }
+                    else
+                    {
+                        if(file_exists("index.php"))
+                        {
+                            include 'index.php';
+                            echo "Blad";
+                        }
                     }
                     mysqli_close($conn);
                 }
