@@ -18,6 +18,9 @@ class Summary {
     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
     $query = "SELECT COUNT(*) AS users FROM uzytkownik;";
     $result = $mysqli->query($query);
+    if (!$result) {
+      throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+    }
     // mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownik;");
     if ($row = $result->fetch_assoc()) {
       $this->people = $row['users'];
