@@ -25,16 +25,7 @@
             function validatePaswd($h1)
             {
                 if( strlen($h1 ) < 8 ) {
-                    $error .= "Password too short!
-                    ";
-                    }
-                    if( strlen($h1 ) > 20 ) {
-                    $error .= "Password too long!
-                    ";
-                    }
-                    if( strlen($h1 ) < 8 ) {
-                    $error .= "Password too short!
-                    ";
+                    $error .= "Password too short!";
                     }
                     if( !preg_match("#[0-9]+#", $h1 ) ) {
                     $error .= "Password must include at least one number!
