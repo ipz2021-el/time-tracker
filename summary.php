@@ -113,9 +113,9 @@ class Summary {
     $query = "SELECT czas_start, czas_stop FROM czas_pracy;";
     $result = $mysqli->query($query);
     while ($row = $result->fetch_assoc()) {
-      echo 'start' . $row["czas_stop"];
-      echo 'stop' . $row["czas_start"];
-      echo $row["czas_stop"] - $row["czas_start"];
+      echo 'start' . strtotime($row["czas_stop"]);
+      echo 'stop' . strtotime($row["czas_start"]);
+      echo strtotime($row["czas_stop"]) - strtotime($row["czas_start"]);
     }
     
     
