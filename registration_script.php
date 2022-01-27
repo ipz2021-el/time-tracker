@@ -24,35 +24,39 @@
 
             function validatePaswd($h1)
             {
-                if( strlen($h1 ) < 8 ) 
+                if (strlen($h1 ) < 8) 
                 {
                     $error .= "Hasło jest za krótkie!";
-                    }
-                    if( !preg_match("#[0-9]+#", $h1 ) ) {
+                }
+                if (!preg_match("#[0-9]+#", $h1)) 
+                {
                     $error .= "Hasło musi zawierać przynajmniej 1 cyfrę!";
-                    }
-                    if( !preg_match("#[a-z]+#", $h1 ) ) {
+                }
+                if (!preg_match("#[a-z]+#", $h1)) 
+                {
                     $error .= "Hasło musi zawierać przynajmniej 1 małą literę!";
-                    }
-                    if( !preg_match("#[A-Z]+#", $h1 ) ) {
+                }
+                if (!preg_match("#[A-Z]+#", $h1)) 
+                {
                     $error .= "Hasło musi zawierać przynajmniej 1 wielką literę!";
-                    }
-                    if( !preg_match("#W+#", $h1 ) ) {
+                }
+                if (!preg_match("#W+#", $h1)) 
+                {
                     $error .= "Hasło musi zawierać przynajmniej 1 znak specjalny!";
-                    }
-                    if($error){
+                }
+                if ($error)
+                {
                     echo "Hasło nieprawidłowe: $error";
                     return(false);
-                    } 
-                    else 
-                    {
+                } 
+                else 
+                {
                     return(true);
                 }
-    
             }
         
         
-            if ($haslo1 == $haslo2)
+            if (($haslo1 == $haslo2) and (validatePaswd($haslo1) == true)) 
             {
                 $dsn = 'mysql:dbname=clock;host=46.41.140.79;port=3306;charset=utf8';
                 $username = 'clockadmin';
