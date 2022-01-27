@@ -25,26 +25,22 @@
             function validatePaswd($h1)
             {
                 if( strlen($h1 ) < 8 ) {
-                    $error .= "Password too short!";
+                    $error .= "Hasło jest za krótkie!";
                     }
                     if( !preg_match("#[0-9]+#", $h1 ) ) {
-                    $error .= "Password must include at least one number!
-                    ";
+                    $error .= "Hasło musi zawierać przynajmniej 1 cyfrę!";
                     }
                     if( !preg_match("#[a-z]+#", $h1 ) ) {
-                    $error .= "Password must include at least one letter!
-                    ";
+                    $error .= "Hasło musi zawierać przynajmniej 1 małą literę!";
                     }
                     if( !preg_match("#[A-Z]+#", $h1 ) ) {
-                    $error .= "Password must include at least one CAPS!
-                    ";
+                    $error .= "Hasło musi zawierać przynajmniej 1 wielką literę!";
                     }
                     if( !preg_match("#W+#", $h1 ) ) {
-                    $error .= "Password must include at least one symbol!
-                    ";
+                    $error .= "Hasło musi zawierać przynajmniej 1 znak specjalny!";
                     }
                     if($error){
-                    echo "Password validation failure(your choise is weak): $error";
+                    echo "Hasło nieprawidłowe: $error";
                     return(false);
                     } else {
                     return(true);
