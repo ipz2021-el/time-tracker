@@ -27,23 +27,23 @@
     </div>
 	<div id="summary">
         <div class="summ">
-            <img src="people.jpg" alt="People">
+            <img src="people.png" alt="People">
             <p>Ilość pracowników: <?php echo $summary->get_people() ?></p>
         </div>
         <div class="summ">
-        <img src="week.jpg" alt="Week">
+        <img src="week.png" alt="Week">
             <p>W tym tygodniu przepracowaliśmy <?php echo $summary->get_week() ?> godzin</p>
         </div>
         <div class="summ">
-        <img src="month.jpg" alt="Month">
+        <img src="month.png" alt="Month">
             <p>W tym miesiącu przepracowaliśmy <?php echo $summary->get_month() ?> godzin</p>
         </div>
         <div class="summ">
-        <img src="year.jpg" alt="Year">
+        <img src="year.png" alt="Year">
             <p>W tym roku przepracowaliśmy <?php echo $summary->get_year() ?> godzin</p>
         </div>
         <div class="summ">
-        <img src="all.jpg" alt="All">
+        <img src="all.png" alt="All">
             <p>Od zarania dziejów przepracowaliśmy <?php echo $summary->get_all() ?> godzin</p>
         </div>
     </div>
