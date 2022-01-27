@@ -16,6 +16,10 @@ class Summary {
   // people
   function get_people() {
     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    if ($mysqli -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+      exit();
+    }
     $query = "SELECT COUNT(*) AS users FROM uzytkownik;";
     $result = $mysqli->query($query);
     if (!$result) {
@@ -25,6 +29,8 @@ class Summary {
     if ($row = $result->fetch_assoc()) {
       $this->people = $row['users'];
     }
+    $result -> free_result();
+    $mysqli -> close();
     return $this->people;
   }
   function set_people() {
