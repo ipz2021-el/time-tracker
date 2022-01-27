@@ -33,7 +33,7 @@
     zawsze. -->
         <div class="summ">
             <img src="people.jpg" alt="People">
-            <p>Ilość pracowników: <?php $summary->get_people() ?></p>
+            <p>Ilość pracowników: <?php echo $summary->get_people() ?></p>
         </div>
         <div class="summ">
         <img src="week.jpg" alt="Week">

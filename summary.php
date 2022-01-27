@@ -15,6 +15,13 @@ class Summary {
 
   // people
   function get_people() {
+    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    $query = "SELECT COUNT(*) AS users FROM uzytkownik;";
+    $result = $mysqli->query($query);
+    // mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownik;");
+    if ($row = $result->fetch_assoc()) {
+      $this->people = $row['users'];
+    }
     return $this->people;
   }
   function set_people() {
