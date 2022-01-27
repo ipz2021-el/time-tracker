@@ -115,7 +115,7 @@ class Summary {
     while ($row = $result->fetch_assoc()) {
       echo 'start' . strtotime($row["czas_stop"]);
       echo 'stop' . strtotime($row["czas_start"]);
-      echo strtotime($row["czas_stop"]) - strtotime($row["czas_start"]);
+      echo floor((strtotime($row["czas_stop"]) - strtotime($row["czas_start"])) / 3600) ;
     }
     
     
