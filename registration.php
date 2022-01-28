@@ -3,9 +3,11 @@
         <title>
             FORMULARZ REJESTRACJI
         </title>
+        <link rel="stylesheet" href="lproject.css">
+	    <script src="lproject.js"></script>
     </head>
     <body>
-        <form action="registration_script.php" method="GET">
+        <form action="registration_script.php" onsubmit="return validate_registration()" method="GET">
             
             <div class="oneinput">
             <label for="imie_">Podaj imię: </label><br>

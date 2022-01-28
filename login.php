@@ -3,9 +3,11 @@
         <title>
             STRONA LOGOWANIA
         </title>
+        <link rel="stylesheet" href="lproject.css">
+	    <script src="lproject.js"></script>
     </head>
     <body>
-        <form action="login_script.php" method="GET">
+        <form action="login_script.php" onsubmit="return validate_login()" method="GET">
         
             <div class="oneinput">
             <label for="email">Podaj email: </label><br>
