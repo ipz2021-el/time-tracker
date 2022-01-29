@@ -60,6 +60,7 @@
                             {
                                 $temp_email = $row['email'];
                                 $temp_haslo = $row['haslo'];
+                                
                                 if (($temp_email == $email) and ($temo_haslo  == $haslo))
                                 {
                                     $poprawne_dane = true;
