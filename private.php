@@ -24,8 +24,14 @@
         <form method="get" action="add_time.php">
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
+
         <form method="get" action="delete_user.php">
+            <input type="hidden" value="<?php echo $_GET['email_']; ?>" name="email__"/>  
             <button type="submit">Usuń konto</button>
+        </form>
+
+        <form method="get" action="delete_user.php">
+            <button type="submit">Wyświetl czas pracy</button>
         </form>
         <form action="index.php" method="GET">
             <input type="submit" value="Strona główna">
