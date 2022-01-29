@@ -1,5 +1,9 @@
 <?php
 class Summary {
+    
+    
+    
+
   
   private $people;
   private $week;
