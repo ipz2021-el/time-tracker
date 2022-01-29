@@ -20,6 +20,9 @@
         <form method="get" action="registration.php">
             <button type="submit">Rejestracja</button>
         </form>
+        <form method="get" action="unregistered.php">
+            <button type="submit">Niezarejestrowany</button>
+        </form>
     </div>
     <div id="banner">
         <!-- do zmiany na cos ladniejszego -->
