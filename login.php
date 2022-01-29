@@ -24,8 +24,8 @@
             </div>
                     
             <div class="oneinput">
-            <label for="haslo1">Podaj haslo: </label><br>
-            <input type="text" id="haslo1" name="haslo1_" placeholder="haslo123!">
+            <label for="haslo">Podaj haslo: </label><br>
+            <input type="text" id="haslo1" name="haslo_" placeholder="haslo123!">
             </div>
             
             <!-- Przycisk WYŚLIJ -->
