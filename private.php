@@ -15,23 +15,25 @@
 	<script src="lproject.js"></script>
 </head>
 <body>
-	<div id="buttons">
-        <form method="get" action="login.php">
-            <button type="submit">Logowanie</button>
-        </form>
-        <form method="get" action="registration.php">
-            <button type="submit">Rejestracja</button>
-        </form>
-    </div>
-    <div id="banner">
+<div id="banner">
         <!-- do zmiany na cos ladniejszego -->
         <H1>CLOCKER</H1>
+        <H2>Uzytkownik: </H2>
     </div>
+	<div id="buttons">
+        <form method="get" action="add_time.php">
+            <button type="submit">Dodaj pozycje czasu pracy</button>
+        </form>
+        <form method="get" action="delete_user.php">
+            <button type="submit">Usuń konto</button>
+        </form>
+        <form action="index.php" method="GET">
+            <input type="submit" value="Strona główna">
+        </form>
+    </div>
+   
 	<div id="summary_private">
-        <div class="summ_private">
-            <img src="people.png" alt="People">
-            <p>Ilość pracowników: <?php echo $summary->get_people() ?></p>
-        </div>
+       
         <div class="summ_private">
         <img src="week.png" alt="Week">
             <p>W tym tygodniu przepracowaliśmy <?php echo $summary->get_week() ?> godzin</p>

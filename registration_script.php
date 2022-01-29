@@ -67,7 +67,7 @@
                     $connection = new \PDO($dsn, $username, $password);
                     $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                     $connection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-                    echo "Połączono prawidłowo\n";
+                    //echo "Połączono prawidłowo\n";
                 }
                 catch(PDOException $e)
                 {
@@ -89,19 +89,19 @@
                     
                     if(mysqli_query($conn, $sql))
                     {
-                        echo "Dodano rekord";
+                        echo "Dodano uytkownika.";
                         include 'login.php';
                     }
 
                     else
                     {
-                    echo "Nie dodano rekordu $sql. " 
+                    echo "Nie dodano uytkownika. $sql. " 
                         . mysqli_error($conn);
                     }
                 }
                 else
                 {
-                    echo "Nie dodano rekordu\n";
+                    echo "Nie dodano uytkownika.\n";
                 }
             }
             else

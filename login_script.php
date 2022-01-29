@@ -56,7 +56,6 @@
                                 if (($temp_email == $email) && ($temp_haslo  == $haslo))
                                 {
                                     $poprawne_dane = true;
-                                    echo "asercia poprawnosc danych";
                                 }
                             }
                         }
