@@ -10,7 +10,6 @@
         <?php
                 $poprawne_dane = false;
                 $email = $_GET['email_'];
-                echo $email;
 
                 $dsn = 'mysql:dbname=clock;host=46.41.140.79;port=3306;charset=utf8';
                 $username = 'clockadmin';
@@ -20,7 +19,7 @@
                     $connection = new \PDO($dsn, $username, $password);
                     $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                     $connection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-                    echo "Połączono prawidłowo\n";
+                    //echo "Połączono prawidłowo\n";
                 }
                 catch(PDOException $e)
                 {
@@ -52,11 +51,13 @@
                                 $temp_email = $row['email'];
                                 if ($temp_email == $email)
                                 {
-                                    $haslo_temp = rand(100000,999999);
+                                    echo "asercja warunek testowy";
+                                    $haslo_temp = strval(rand(100000,999999));
                                     $sql_temp = "UPDATE uzytkownik SET haslo = '$haslo_temp' WHERE email = '$email'";
+                                    //UPDATE table_name SET column1 = value1, column2 = value2 WHERE id=100;
                                     if(mysqli_query($conn, $sql_temp))
                                     {
-                                        echo "Zresetowano haslo";
+                                        echo "Zresetowano haslo. Sprawdz pocztę email.";
                                         mail("$email","To jest haslo tymczasowe", "$haslo_temp");
                                         $poprawne_dane = true;
                                     }
@@ -71,6 +72,16 @@
                             include 'index.php';
                         }
                     }
+                    else
+                    {
+                        if(file_exists("index.php")) 
+                        {
+                            echo "Nie zresetowano hasła. Błedny email.";
+                            include 'index.php';
+                        }
+                    }
+
+                    
                     mysqli_close($conn);
                 }
                 else

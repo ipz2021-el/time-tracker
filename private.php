@@ -1,7 +1,7 @@
 <?php
     // require_once(__DIR__ . '/summary.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'summary_private.php';
-    $summary = new Summary_private();
+    $summary_private = new Summary_private();
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-class Summary {
+class Summary_private {
     
     
     
