@@ -54,6 +54,10 @@
             <button type="submit">Resetuj hasło</button>
             </div>
         </form>
+
+        <form action="index.php" method="GET">
+            <input type="submit" value="Strona główna">
+        </form>
     </body>
 </html>
 

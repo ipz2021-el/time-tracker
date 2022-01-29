@@ -7,6 +7,11 @@
 	    <script src="lproject.js"></script>
     </head>
     <body>
+        <div id="banner_rejestracja">
+            <!-- do zmiany na cos ladniejszego -->
+            <H1>CLOCKER</H1>
+            <H2>Rejestracja...</H2>
+        </div>
         <form action="registration_script.php" onsubmit="return validate_registration()" method="GET">
             
             <div class="oneinput">
@@ -72,6 +77,10 @@
             <!-- Przycisk WYCZYŚĆ DANE -->
             <input type="reset" value="Wyczyść dane">
 
+        </form>
+
+        <form action="index.php" method="GET">
+            <input type="submit" value="Strona główna">
         </form>
     </body>
 </html>

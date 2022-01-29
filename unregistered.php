@@ -2,11 +2,15 @@
 <html>
     <head>
         <title>
-            STRONA GLOWNA UZYTKOWNIKA
+            STRONA NIEZAREJESTROWANEGO UZYTKOWNIKA
         </title>
     </head>
     <body>
-        Strona prywatna uzytkownika.
+        <div id="banner_rejestracja">
+            <!-- do zmiany na cos ladniejszego -->
+            <H1>CLOCKER</H1>
+            <H2>Niezarejestrowany...</H2>
+        </div>
         
 	</body>
 </html>
