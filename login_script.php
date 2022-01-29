@@ -15,8 +15,8 @@
                 //======================================
                 //======================================
 
-                echo $email;
-                echo $haslo;
+                //echo $email;
+                //echo $haslo;
                 
                 //======================================
                 //======================================
@@ -30,7 +30,7 @@
                     $connection = new \PDO($dsn, $username, $password);
                     $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                     $connection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-                    echo "Połączono prawidłowo\n";
+                    //echo "Połączono prawidłowo\n";
                 }
                 catch(PDOException $e)
                 {
@@ -51,7 +51,7 @@
                         $wynik = mysqli_query($conn,$sql);
                         if($wynik == false)
                         {
-                            echo "Bląd zapytania SQL";
+                            //echo "Bląd zapytania SQL";
                             include 'login.php';
                         }
                         else
@@ -63,7 +63,10 @@
                                 if (($temp_email == $email) and ($temo_haslo  == $haslo))
                                 {
                                     $poprawne_dane = true;
+                                    echo "asercia poprawnosc danych";
                                 }
+                                echo $temp_email;
+                                echo $temp_haslo;
                             }
                         }
                     }
@@ -72,7 +75,7 @@
                         if(file_exists("private.php"))
                         {
                             include 'private.php';
-                            echo "Zalogowano poprawnie";
+                            //echo "Zalogowano poprawnie";
                         }
                     }
                     else
@@ -80,14 +83,26 @@
                         if(file_exists("index.php"))
                         {
                             include 'index.php';
-                            echo "Blad";
+                            //echo "Blad";
+                        }
+                        else
+                        {
+                            echo "Błąd otwarcia strony";
                         }
                     }
                     mysqli_close($conn);
                 }
                 else
                 {
-                    echo "Błąd połączenia";
+                    if(file_exists("index.php"))
+                    {
+                        include 'index.php';
+                        //echo "Błąd połączenia";
+                    }
+                    else
+                    {
+                        echo "Błąd otwarcia strony";
+                    }
                 }
         ?>
     <br>
