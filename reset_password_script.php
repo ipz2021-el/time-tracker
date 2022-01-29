@@ -1,3 +1,9 @@
+<?php
+    
+    require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
+    $send_email = new send_email($email, $haslo_temp);
+?>
+
 
 <html>
     <head>
@@ -51,14 +57,20 @@
                                 $temp_email = $row['email'];
                                 if ($temp_email == $email)
                                 {
-                                    echo "asercja warunek testowy";
                                     $haslo_temp = strval(rand(100000,999999));
                                     $sql_temp = "UPDATE uzytkownik SET haslo = '$haslo_temp' WHERE email = '$email'";
                                     //UPDATE table_name SET column1 = value1, column2 = value2 WHERE id=100;
                                     if(mysqli_query($conn, $sql_temp))
                                     {
-                                        echo "Zresetowano haslo. Sprawdz pocztę email.";
-                                        mail("$email","To jest haslo tymczasowe", "$haslo_temp");
+                                        
+                                        if ($send_email -> send_email($email, $haslo_temp))
+                                        {
+                                            echo "Zresetowano haslo. Sprawdz pocztę email.";
+                                        }
+                                        else
+                                        {
+                                            echo "Blad podczas wysyłania hasła na pocztę email.";
+                                        }
                                         $poprawne_dane = true;
                                     }
                                 }
@@ -76,7 +88,7 @@
                     {
                         if(file_exists("index.php")) 
                         {
-                            echo "Nie zresetowano hasła. Błedny email.";
+                            echo "Nie zresetowano hasła.";
                             include 'index.php';
                         }
                     }
