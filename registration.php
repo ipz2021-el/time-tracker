@@ -1,7 +1,8 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <title>
-            FORMULARZ REJESTRACJI
+            CLOCKER FORMULARZ REJESTRACJI
         </title>
         <link rel="stylesheet" href="lproject.css">
 	    <script src="lproject.js"></script>

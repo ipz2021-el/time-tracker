@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Clocker logowanie</title>
+        <title>CLOCKER STRONA LOGOWANIA</title>
         <link rel="stylesheet" href="lproject.css">
 	    <script src="lproject.js"></script>
     </head>

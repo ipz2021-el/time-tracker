@@ -1,9 +1,12 @@
 
 <html>
     <head>
+        <meta charset="utf-8">
         <title>
-            STRONA NIEZAREJESTROWANEGO UZYTKOWNIKA
+            CLOCKER STRONA NIEZAREJESTROWANEGO UZYTKOWNIKA
         </title>
+        <link rel="stylesheet" href="lproject.css">
+	    <script src="lproject.js"></script>
     </head>
     <body>
         <div id="banner_rejestracja">

@@ -1,26 +1,19 @@
 
 <html>
     <head>
+        <meta charset="utf-8">
         <title>
-            SKRYPT WYSYLKI
+            CLOCKER SKRYPT WYSYLKI
         </title>
+        <link rel="stylesheet" href="lproject.css">
+	    <script src="lproject.js"></script>
     </head>
 
     <body>
         <?php
                 $poprawne_dane = false;
-                $email = $_GET['email_'];
+                $email = $_GET['email_']; 
                 $haslo = $_GET['haslo_'];
-                //======================================
-                //======================================
-                //======================================
-
-                //echo $email;
-                //echo $haslo;
-                
-                //======================================
-                //======================================
-                //======================================
 
                 $dsn = 'mysql:dbname=clock;host=46.41.140.79;port=3306;charset=utf8';
                 $username = 'clockadmin';
@@ -60,14 +53,12 @@
                             {
                                 $temp_email = $row['email'];
                                 $temp_haslo = $row['haslo'];
-                                
-                                if (($temp_email == $email) and ($temo_haslo  == $haslo))
+
+                                if (($temp_email == $email) && ($temp_haslo  == $haslo))
                                 {
                                     $poprawne_dane = true;
                                     echo "asercia poprawnosc danych";
                                 }
-                                echo $temp_email;
-                                echo $temp_haslo;
                             }
                         }
                     }
