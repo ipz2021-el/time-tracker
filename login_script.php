@@ -72,8 +72,8 @@
                     {
                         if(file_exists("index.php"))
                         {
+                            echo "Podano nieprawidlowe dane.";
                             include 'index.php';
-                            //echo "Blad";
                         }
                         else
                         {
