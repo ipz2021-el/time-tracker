@@ -87,7 +87,7 @@
                     if (mysqli_query($conn, $sql_add_time))
                     {
                         
-                        echo $email;
+                        echo "Dodano czas pracy."
                         if(file_exists("private.php")) 
                         {
                             include 'private.php';
