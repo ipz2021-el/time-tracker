@@ -1,9 +1,9 @@
 <?php
+    $email___ = $_GET['email_'];
     // require_once(__DIR__ . '/summary.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'summary_private.php';
-    $summary_private = new Summary_private();
+    $summary_private = new Summary_private($email___);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,20 +58,17 @@
        
         <div class="summ_private">
         <img src="week.png" alt="Week">
-            <p>W tym tygodniu przepracowaliśmy <?php echo $summary->get_week() ?> godzin</p>
+            <p>W tym tygodniu przepracowałeś <?php echo $summary_private->get_week($email) ?> godzin</p>
         </div>
         <div class="summ_private">
         <img src="month.png" alt="Month">
-            <p>W tym miesiącu przepracowaliśmy <?php echo $summary->get_month() ?> godzin</p>
+            <p>W tym miesiącu przepracowałeś <?php echo $summary_private->get_month($email) ?> godzin</p>
         </div>
         <div class="summ_private">
         <img src="year.png" alt="Year">
-            <p>W tym roku przepracowaliśmy <?php echo $summary->get_year() ?> godzin</p>
+            <p>W tym roku przepracowałeś <?php echo $summary_private->get_year($email) ?> godzin</p>
         </div>
         <div class="summ_private">
-        <img src="all.png" alt="All">
-            <p>Od zarania dziejów przepracowaliśmy <?php echo $summary->get_all() ?> godzin</p>
-        </div>
     </div>
 </body>
 </html>
