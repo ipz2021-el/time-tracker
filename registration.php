@@ -14,7 +14,7 @@
             <H1>CLOCKER</H1>
             <H2>Rejestracja...</H2>
         </div>
-        <form action="registration_script.php" onsubmit="return validate_registration()" method="GET">
+        <form action="registration_script.php" onsubmit="return validate_registration()" method="POST">
             
             <div class="oneinput">
             <label for="imie_">Podaj imię: </label><br>

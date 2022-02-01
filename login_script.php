@@ -11,8 +11,8 @@
     <body>
         <?php
                 $poprawne_dane = false;
-                $email = $_GET['email_']; 
-                $haslo = $_GET['haslo_'];
+                $email = $_POST['email_']; 
+                $haslo = $_POST['haslo_'];
 
                 $dsn = 'mysql:dbname=clock;host=46.41.140.79;port=3306;charset=utf8';
                 $username = 'clockadmin';

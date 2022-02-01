@@ -9,18 +9,18 @@
     <body>
         
         <?php
-            $imie = $_GET['imie_'];
-            $nazwisko = $_GET['nazwisko_'];
-            $adres_ulica = $_GET['adres_ulica_'];
-            $adres_numer_domu_mieszkania = $_GET['adres_numer_domu_mieszkania_'];
-            $adres_miasto = $_GET['adres_miasto_'];
-            $adres_kod_pocztowy = $_GET['adres_kod_pocztowy_'];
-            $adres_kraj = $_GET['adres_kraj_'];
-            $klasa_uzytkownika = $_GET['klasa_uzytkownika_'];
-            $email = $_GET['email_'];
-            $telefon_komorkowy = $_GET['telefon_komorkowy_'];
-            $haslo1 = $_GET['haslo1_'];
-            $haslo2 = $_GET['haslo2_'];
+            $imie = $_POST['imie_'];
+            $nazwisko = $_POST['nazwisko_'];
+            $adres_ulica = $_POST['adres_ulica_'];
+            $adres_numer_domu_mieszkania = $_POST['adres_numer_domu_mieszkania_'];
+            $adres_miasto = $_POST['adres_miasto_'];
+            $adres_kod_pocztowy = $_POST['adres_kod_pocztowy_'];
+            $adres_kraj = $_POST['adres_kraj_'];
+            $klasa_uzytkownika = $_POST['klasa_uzytkownika_'];
+            $email = $_POST['email_'];
+            $telefon_komorkowy = $_POST['telefon_komorkowy_'];
+            $haslo1 = $_POST['haslo1_'];
+            $haslo2 = $_POST['haslo2_'];
 
             function validatePaswd($h1)
             {

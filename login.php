@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <form action="login_script.php" onsubmit="return validate_login()" method="GET">
+        <form action="login_script.php" onsubmit="return validate_login()" method="POST">
         
             <div id="banner_logowanie">
                 <!-- do zmiany na cos ladniejszego -->
