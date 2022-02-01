@@ -6,6 +6,7 @@
         </title>
         <link rel="stylesheet" href="lproject.css">
 	    <script src="lproject.js"></script>
+        <script src="registration_utils.js"></script>
     </head>
     <body>
         <div id="banner_rejestracja">
@@ -60,6 +61,7 @@
             <div class="oneinput">
             <label for="haslo1">Podaj haslo: </label><br>
             <input type="text" id="haslo1" name="haslo1_" placeholder="haslo123!">
+            <textarea id="pwdmsg"></textarea>
             </div>
                 
             <div class="oneinput">
