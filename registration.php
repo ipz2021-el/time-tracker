@@ -61,7 +61,14 @@
             <div class="oneinput">
             <label for="haslo1">Podaj haslo: </label><br>
             <input type="text" id="haslo1" name="haslo1_" placeholder="haslo123!">
-            <textarea id="pwdmsg"></textarea>
+            <div id="message">
+            <h3>Hasło musi zawierać:</h3>
+            <p id="letter" class="invalid">Przynajmniej 1 małą literę</p>
+            <p id="capital" class="invalid">Przynajmniej 1 wielką literę</p>
+            <p id="number" class="invalid">Przynajmniej 1 cyfrę</p>
+            <p id="special_char" class="invalid">Przynajmniej 1 znak specjalny</p>
+            <p id="length" class="invalid">Minimum 8 znaków</p>
+            </div>
             </div>
                 
             <div class="oneinput">
