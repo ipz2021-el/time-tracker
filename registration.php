@@ -55,12 +55,12 @@
                 
             <div class="oneinput">
             <label for="email">Podaj email: </label><br>
-            <input type="text" id="email" name="email_" placeholder="jan@kowalski.pl">
+            <input type="email" id="email" name="email_" placeholder="jan@kowalski.pl">
             </div>
                 
             <div class="oneinput">
             <label for="haslo1">Podaj haslo: </label><br>
-            <input type="text" id="haslo1" name="haslo1_" placeholder="haslo123!">
+            <input type="password" id="haslo1" name="haslo1_" placeholder="haslo123!">
             <div id="message">
             <h3>Hasło musi zawierać:</h3>
             <p id="letter" class="invalid">Przynajmniej 1 małą literę</p>
@@ -73,7 +73,7 @@
                 
             <div class="oneinput">
             <label for="haslo2">Podaj haslo: </label><br>
-            <input type="text" id="haslo2" name="haslo2_" placeholder="haslo123!">
+            <input type="password" id="haslo2" name="haslo2_" placeholder="haslo123!">
             </div>
                 
             <div class="oneinput">

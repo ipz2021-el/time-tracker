@@ -20,12 +20,12 @@
 
             <div class="oneinput">
             <label for="email">Podaj email: </label><br>
-            <input type="text" id="email" name="email_" placeholder="jan@kowalski.pl">
+            <input type="email" id="email" name="email_" placeholder="jan@kowalski.pl">
             </div>
                     
             <div class="oneinput">
             <label for="haslo">Podaj haslo: </label><br>
-            <input type="text" id="haslo1" name="haslo_" placeholder="haslo123!">
+            <input type="password" id="haslo1" name="haslo_" placeholder="haslo123!">
             </div>
             
             <!-- Przycisk WYŚLIJ -->
@@ -47,7 +47,7 @@
 
             <div class="oneinput">
             <label for="email">Resetuj email: </label><br>
-            <input type="text" id="email" name="email_" placeholder="jan@kowalski.pl">
+            <input type="email" id="email" name="email_" placeholder="jan@kowalski.pl">
             </div>
 
             <div>
