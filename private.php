@@ -24,7 +24,7 @@
 
             $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
             
-            $email = $_GET['email_'];
+            $email = $_POST['email_'];
             $sql_temp = "SELECT imie, nazwisko FROM uzytkownik WHERE email = '$email'";
 
             $resultAll = mysqli_query($conn, $sql_temp);
@@ -36,12 +36,12 @@
     </div>
 	<div id="buttons">
         <form method="get" action="add_time.php">
-            <input type="hidden" value="<?php echo $_GET['email_']; ?>" name="email__"/>  
+            <input type="hidden" value="<?php echo $_POST['email_']; ?>" name="email__"/>  
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
 
         <form method="get" action="delete_user.php">
-            <input type="hidden" value="<?php echo $_GET['email_']; ?>" name="email__"/>  
+            <input type="hidden" value="<?php echo $_POST['email_']; ?>" name="email__"/>  
             <button type="submit">Usuń konto</button>
         </form>
 
