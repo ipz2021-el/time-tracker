@@ -27,11 +27,11 @@
                 <input type="datetime-local" id="start" name="starttime">
             </div>
             <div class="oneinput">
-                <label for="stop">Start</label>
+                <label for="stop">Stop</label>
                 <input type="datetime-local" id="stop" name="stoptime">
             </div>
             <div class="oneinput">
-                <label for="project">Choose a car:</label>
+                <label for="project">Wybierz projekt:</label>
                 <select id="project" name="project">
                     <option value="project">Bez projektu</option>
                 <?php
