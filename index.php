@@ -21,6 +21,9 @@
                 echo "<form method='get' action='private.php'>";
                 echo "<button type='submit'>Moja strona</button>";
                 echo "</form>";
+                echo "<form method='get' action='logout.php'>";
+                echo "<button type='submit'>Wyloguj</button>";
+                echo "</form>";
             }
         ?>
         <form method="get" action="login.php">

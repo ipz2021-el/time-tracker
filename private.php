@@ -36,6 +36,10 @@
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
 
+        <form method='get' action='logout.php'>
+            <button type='submit'>Wyloguj</button>
+        </form>
+
         <form method="get" action="delete_user.php">
             <input type="hidden" value="<?php echo $email; ?>" name="email__"/>  
             <button type="submit">Usuń konto</button>
