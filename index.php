@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // require_once(__DIR__ . '/summary.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'summary.php';
     $summary = new Summary();
@@ -14,6 +15,14 @@
 </head>
 <body>
 	<div id="buttons">
+        <?php
+            if (isset($_SESSION["email"])){
+                echo "<H2>Witaj " . $_SESSION["name"] . "</H2>";
+                echo "<form method='get' action='private.php'>";
+                echo "<button type='submit'>Moja strona</button>";
+                echo "</form>";
+            }
+        ?>
         <form method="get" action="login.php">
             <button type="submit">Logowanie</button>
         </form>
