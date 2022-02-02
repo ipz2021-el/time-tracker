@@ -34,7 +34,7 @@
                 if ($connection == true)
                 {   
                     $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
-                    $sql = "SELECT email, haslo, imie FROM uzytkownik WHERE email='{$email}'";
+                    $sql = "SELECT id_uzytkownik, email, haslo, imie FROM uzytkownik WHERE email='{$email}'";
 
                     if($conn == false)
                     {
@@ -55,7 +55,8 @@
                             while($row = mysqli_fetch_array($wynik))
                             {
                                 if (($row['email'] == $email) && ($row['haslo']  == $haslo))
-                                {
+                                {  
+                                    $iduser = $row['id_uzytkownik'];
                                     $imie = $row['imie'];
                                     $poprawne_dane = true;
                                 }
@@ -69,6 +70,7 @@
                             session_start();
                             $_SESSION['email'] = htmlspecialchars($email);
                             $_SESSION['name'] = htmlspecialchars($imie);
+                            $_SESSION['idu'] = htmlspecialchars($iduser);
                             header("Location: https://time.tea-it.pl/private.php");
                             exit;
                             // include 'private.php';
