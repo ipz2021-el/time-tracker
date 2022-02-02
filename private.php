@@ -1,5 +1,5 @@
 <?php
-    $email___ = $_GET['email_'];
+    $email___ = $_POST['email_'];
     // require_once(__DIR__ . '/summary.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'summary_private.php';
     $summary_private = new Summary_private($email___);

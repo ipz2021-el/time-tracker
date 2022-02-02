@@ -95,8 +95,11 @@
                     
                     if(mysqli_query($conn, $sql))
                     {
-                        echo "Dodano uytkownika.";
-                        include 'login.php';
+                        // echo "Dodano uytkownika.";
+                        // include 'login.php';
+                        header("Location: https://time.tea-it.pl/login.php");
+                        exit;
+                        
                     }
 
                     else
