@@ -2,6 +2,14 @@
     $haslo_temp = "Try1234!";
     $email = $_GET['email_'];
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
+    if ( function_exists( 'mail' ) )
+    {
+        echo 'mail() is available';
+    }
+    else
+    {
+        echo 'mail() has been disabled';
+    }
     echo " wysylka";
     $send_email = new send_email($email, $haslo_temp);
     echo "po";
