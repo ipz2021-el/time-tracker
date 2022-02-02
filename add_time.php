@@ -4,6 +4,7 @@
         header("Location: https://time.tea-it.pl/login.php");
         exit();
     }
+    require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
 ?>
 <html>
     <head>
@@ -21,66 +22,38 @@
             <H2>Dodaj czas...</H2>
         </div>
         <form action="add_time_script.php" method="POST">
-            
             <div class="oneinput">
-            <label for="dzien_start_">Dzień rozpoczęcia: </label><br>
-            <input type="text" id="dzien_start" name="dzien_start_" placeholder="1">
+                <label for="start">Start</label>
+                <input type="datetime-local" id="start" name="starttime">
             </div>
-                
             <div class="oneinput">
-            <label for="miesiac_start_">Miesiąc rozpoczęcia: </label><br>
-            <input type="text" id="miesiac_start" name="miesiac_start_" placeholder="1">
+                <label for="stop">Start</label>
+                <input type="datetime-local" id="stop" name="stoptime">
             </div>
-                    
             <div class="oneinput">
-            <label for="rok_start_">Rok rozpoczęcia: </label><br>
-            <input type="text" id="rok_start" name="rok_start_" placeholder="2022">
+                <label for="project">Choose a car:</label>
+                <select id="project" name="project">
+                    <option value="project">Bez projektu</option>
+                <?php
+                    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                    if ($mysqli -> connect_errno) {
+                        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                        // exit();
+                    }
+                    $sql_projekt = "SELECT nazwa FROM projekt";
+                    $result = $mysqli->query($sql_projekt);
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row["nazwa"] . "'>" . $row["nazwa"] . "</option>";
+                    }
+                    $result -> free_result();
+                    $mysqli -> close();
+                ?>
+                </select>
             </div>
-                
-            <div class="oneinput">
-            <label for="godzina_start_">Godzina rozpczęcia: </label><br>
-            <input type="text" id="godzina_start" name="godzina_start_" placeholder="08">
-            </div>
-                
-            <div class="oneinput">
-            <label for="minuta_start_">Minuta rozpoczęcia: </label><br>
-            <input type="text" id="minuta_start" name="minuta_start_" placeholder="00">
-            </div>
-                
-            <!-- ================================================= -->
-            <!-- ================================================= -->
-            <!-- ================================================= -->
-
-
-            <div class="oneinput">
-            <label for="dzien_stop_">Dzień zakończenia: </label><br>
-            <input type="text" id="dzien_stop" name="dzien_stop_" placeholder="1">
-            </div>
-                
-            <div class="oneinput">
-            <label for="miesiac_stop_">Miesiąc zakończenia: </label><br>
-            <input type="text" id="dmiesiac_stop" name="miesiac_stop_" placeholder="1">
-            </div>
-                    
-            <div class="oneinput">
-            <label for="rok_stop_">Rok zakończenia: </label><br>
-            <input type="text" id="rok_stop" name="rok_stop_" placeholder="2022">
-            </div>
-                
-            <div class="oneinput">
-            <label for="godzina_stop_">Godzina zakończenia: </label><br>
-            <input type="text" id="godzina_stop" name="godzina_stop_" placeholder="16">
-            </div>
-                
-            <div class="oneinput">
-            <label for="minuta_stop_">Minuta zakończenia: </label><br>
-            <input type="text" id="minuta_stop" name="minuta_stop_" placeholder="00">
-            </div>
-
-            <div class="oneinput">
+            <!-- <div class="oneinput">
             <label for="projekt_nazwa_">Nazwa projektu: </label><br>
             <input type="text" id="projekt_nazwa" name="projekt_nazwa_" placeholder="Projekt">
-            </div>
+            </div> -->
 
             <div class="oneinput">
             <label for="notatka_">Opis czynności: </label><br>
@@ -92,8 +65,9 @@
             <!-- ================================================= -->
             
             <!-- Przycisk WYŚLIJ -->
-            <input type="submit" value="Dodaj czas pracy">
-
+            <div class="oneinput">
+                <input type="submit" value="Dodaj czas pracy">
+            </div>
         </form>
 
         <form action="private.php" method="GET">
