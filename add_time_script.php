@@ -6,7 +6,7 @@
         exit();
     }
     $email = $_SESSION["email"];
-    $iduser = $_SESSION["idu"];
+    $id_uzytkownik = $_SESSION["idu"];
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
     // require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
     // $send_email = new send_email($email, $haslo_temp);
@@ -33,11 +33,11 @@
                 echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                 exit();
             }
-            $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa = '{$projekt}'";
+            $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa = '{$project}'";
             $result = $mysqli->query($sql_projekt);
-            if($results->num_rows === 0)
+            if($result->num_rows === 0)
             {
-                echo 'No results';
+                echo 'No result';
                 $id_projekt = '';
             }
             else
