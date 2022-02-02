@@ -1,7 +1,10 @@
 <?php
-    
+    $haslo_temp = "Try1234!";
+    $email = $_GET['email_'];
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
+    echo " wysylka";
     $send_email = new send_email($email, $haslo_temp);
+    echo "po";
 ?>
 
 
