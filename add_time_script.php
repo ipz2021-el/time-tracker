@@ -21,8 +21,8 @@
 
     <body>
         <?php
-            $starttime = $_POST['dzien_start_'];
-            $stoptime = $_POST['miesiac_start_'];
+            $starttime = $_POST['starttime'];
+            $stoptime = $_POST['stoptime'];
             $project = $_POST['project'];            
             $notatka = $_POST['notatka_'];
             // $czas_start = mktime($godzina_start, $minuta_start, $sekunda_start, $miesiac_start, $dzien_start, $rok_start);
