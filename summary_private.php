@@ -30,7 +30,6 @@ class Summary_private {
     //====================
     //====================
     //====================
-    $email = $_GET['email_'];
     $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
@@ -67,7 +66,6 @@ class Summary_private {
     //====================
     //====================
     //====================
-    $email = $_GET['email_'];
     $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
@@ -102,7 +100,6 @@ class Summary_private {
     //====================
     //====================
     //====================
-    $email = $_GET['email_'];
     $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
