@@ -9,6 +9,8 @@
     <body>
         
         <?php
+            // po co klasa usera?
+            // Nie jest dodawana rola usera !!!!
             $imie = $_POST['imie_'];
             $nazwisko = $_POST['nazwisko_'];
             $adres_ulica = $_POST['adres_ulica_'];
@@ -16,11 +18,12 @@
             $adres_miasto = $_POST['adres_miasto_'];
             $adres_kod_pocztowy = $_POST['adres_kod_pocztowy_'];
             $adres_kraj = $_POST['adres_kraj_'];
-            $klasa_uzytkownika = $_POST['klasa_uzytkownika_'];
+            $klasa_uzytkownika = "foo" //$_POST['klasa_uzytkownika_'];
             $email = $_POST['email_'];
             $telefon_komorkowy = $_POST['telefon_komorkowy_'];
             $haslo1 = $_POST['haslo1_'];
             $haslo2 = $_POST['haslo2_'];
+            $rola = 1;
 
             function validatePaswd($h1)
             {
@@ -84,8 +87,8 @@
                 {   
                     $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
 
-                    $sql = "INSERT INTO uzytkownik (imie, nazwisko, adres_ulica, adres_numer_domu_mieszkania, adres_miasto, adres_kod_pocztowy, adres_kraj, klasa_uzytkownika, email, telefon_komorkowy, haslo)
-                            VALUES ('$imie', '$nazwisko', '$adres_ulica', '$adres_numer_domu_mieszkania', '$adres_miasto', '$adres_kod_pocztowy', '$adres_kraj', '$klasa_uzytkownika', '$email', '$telefon_komorkowy', '$haslo1')";
+                    $sql = "INSERT INTO uzytkownik (imie, nazwisko, adres_ulica, adres_numer_domu_mieszkania, adres_miasto, adres_kod_pocztowy, adres_kraj, klasa_uzytkownika, email, telefon_komorkowy, haslo, id_rola)
+                            VALUES ('$imie', '$nazwisko', '$adres_ulica', '$adres_numer_domu_mieszkania', '$adres_miasto', '$adres_kod_pocztowy', '$adres_kraj', '$klasa_uzytkownika', '$email', '$telefon_komorkowy', '$haslo1', '$rola')";
                             
 
                     if($conn == false)
@@ -118,7 +121,9 @@
                 // Tu lepiej dać header("Location: https://time.tea-it.pl/registration.php?[tu lista parametrow bez hasla]") z parametrami a na registration.php wpisac je do pól
                 echo " Hasla sa rózne.";
                 echo " Podaj ponownie haslo.";
-                include 'registration.php';
+                // include 'registration.php';
+                header("Location: https://time.tea-it.pl/registration.php");
+                exit;
             }
         ?>
     <br>

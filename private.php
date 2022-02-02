@@ -26,7 +26,7 @@
         <!-- do zmiany na cos ladniejszego -->
         <H1>CLOCKER</H1>
         <?php
-            echo "<H2>Witaj " . $_SESSION["name"]</H2>;
+            echo "<H2>Witaj " . $_SESSION["name"] . "</H2>";
         ?>
 
     </div>
