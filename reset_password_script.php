@@ -80,21 +80,21 @@
                             }
                         }
                     }
-                    if ($poprawne_dane == true)
-                    {
-                        if(file_exists("index.php")) 
-                        {
-                            include 'index.php';
-                        }
-                    }
-                    else
-                    {
-                        if(file_exists("index.php")) 
-                        {
-                            echo "Nie zresetowano hasła.";
-                            include 'index.php';
-                        }
-                    }
+                    // if ($poprawne_dane == true)
+                    // {
+                    //     if(file_exists("index.php")) 
+                    //     {
+                    //         include 'index.php';
+                    //     }
+                    // }
+                    // else
+                    // {
+                    //     if(file_exists("index.php")) 
+                    //     {
+                    //         echo "Nie zresetowano hasła.";
+                    //         include 'index.php';
+                    //     }
+                    // }
 
                     
                     mysqli_close($conn);
