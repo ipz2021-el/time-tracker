@@ -18,7 +18,7 @@
             $adres_miasto = $_POST['adres_miasto_'];
             $adres_kod_pocztowy = $_POST['adres_kod_pocztowy_'];
             $adres_kraj = $_POST['adres_kraj_'];
-            $klasa_uzytkownika = "foo" //$_POST['klasa_uzytkownika_'];
+            $klasa_uzytkownika = "foo"; //$_POST['klasa_uzytkownika_'];
             $email = $_POST['email_'];
             $telefon_komorkowy = $_POST['telefon_komorkowy_'];
             $haslo1 = $_POST['haslo1_'];
