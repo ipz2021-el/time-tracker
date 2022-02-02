@@ -55,8 +55,13 @@
             </div>
         </form>
 
+        <form action="registration.php" method="GET">
+            <label for="registration">Nie masz konta? Zarejestruj się!</label><br>
+            <input id="registration" type="submit" value="Strona rejestracji">
+        </form>
         <form action="index.php" method="GET">
-            <input type="submit" value="Strona główna">
+            <label for="mainsite">Powrót na stronę główną </label><br>
+            <input id="mainsite" type="submit" value="Strona główna">
         </form>
     </body>
 </html>

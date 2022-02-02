@@ -1,8 +1,15 @@
 <?php
-    $email___ = $_POST['email_'];
+    session_start();
+    if (!isset($_SESSION["email"])){
+        header("Location: https://time.tea-it.pl/login.php");
+        exit();
+    }
+
+
+    $email = $_SESSION["email"];
     // require_once(__DIR__ . '/summary.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'summary_private.php';
-    $summary_private = new Summary_private($email___);
+    $summary_private = new Summary_private($email);
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,30 +25,19 @@
 <div id="banner">
         <!-- do zmiany na cos ladniejszego -->
         <H1>CLOCKER</H1>
-        <H2>Uzytkownik: </H2>
-
         <?php
-
-            $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
-            
-            $email = $_POST['email_'];
-            $sql_temp = "SELECT imie, nazwisko FROM uzytkownik WHERE email = '$email'";
-
-            $resultAll = mysqli_query($conn, $sql_temp);
-            $rowData = mysqli_fetch_array($resultAll);
-            echo $rowData["imie"].' ';
-            echo $rowData["nazwisko"].'<br><br>';
+            echo "<H2>Witaj " . $_SESSION["name"]</H2>;
         ?>
 
     </div>
 	<div id="buttons">
         <form method="get" action="add_time.php">
-            <input type="hidden" value="<?php echo $_POST['email_']; ?>" name="email__"/>  
+            <input type="hidden" value="<?php echo $email; ?>" name="email__"/>  
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
 
         <form method="get" action="delete_user.php">
-            <input type="hidden" value="<?php echo $_POST['email_']; ?>" name="email__"/>  
+            <input type="hidden" value="<?php echo $email; ?>" name="email__"/>  
             <button type="submit">Usuń konto</button>
         </form>
 

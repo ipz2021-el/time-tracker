@@ -10,6 +10,8 @@
 
     <body>
         <?php
+            if (!empty($_POST['email_']) && !empty($_POST['haslo_']))
+            {
                 $poprawne_dane = false;
                 $email = $_POST['email_']; 
                 $haslo = $_POST['haslo_'];
@@ -32,7 +34,7 @@
                 if ($connection == true)
                 {   
                     $conn = mysqli_connect("46.41.140.79", "clockadmin", "VDm9T-Y#8b_Q4qqj", "clock");
-                    $sql = "SELECT email, haslo FROM uzytkownik";
+                    $sql = "SELECT email, haslo, imie FROM uzytkownik WHERE email='{$email}'";
 
                     if($conn == false)
                     {
@@ -44,17 +46,17 @@
                         if($wynik == false)
                         {
                             //echo "Bląd zapytania SQL";
-                            include 'login.php';
+                            // include 'login.php';
+                            header("Location: https://time.tea-it.pl/login.php");
+                            exit;
                         }
                         else
                         {
                             while($row = mysqli_fetch_array($wynik))
                             {
-                                $temp_email = $row['email'];
-                                $temp_haslo = $row['haslo'];
-
-                                if (($temp_email == $email) && ($temp_haslo  == $haslo))
+                                if (($row['email'] == $email) && ($row['haslo']  == $haslo))
                                 {
+                                    $imie = $row['imie'];
                                     $poprawne_dane = true;
                                 }
                             }
@@ -64,16 +66,24 @@
                     {
                         if(file_exists("private.php"))
                         {
-                            include 'private.php';
+                            session_start();
+                            $_SESSION['email'] = htmlspecialchars($email);
+                            $_SESSION['name'] = htmlspecialchars($imie);
+                            header("Location: https://time.tea-it.pl/private.php");
+                            exit;
+                            // include 'private.php';
                             //echo "Zalogowano poprawnie";
                         }
                     }
                     else
                     {
-                        if(file_exists("index.php"))
+                        if(file_exists("login.php"))
                         {
+                            // Tu lepiej dać header("Location: https://time.tea-it.pl/login.php?[tu parametr z info ze sie nie udalo]") 
+                            // opcjonalnie z parametram email do wpisania do póla
                             echo "Podano nieprawidlowe dane.";
-                            include 'index.php';
+                            header("Location: https://time.tea-it.pl/login.php?email={$email}");
+                            exit;
                         }
                         else
                         {
@@ -86,14 +96,17 @@
                 {
                     if(file_exists("index.php"))
                     {
-                        include 'index.php';
+                        // include 'index.php';
                         //echo "Błąd połączenia";
+                        header("Location: https://time.tea-it.pl/index.php");
+                        exit;
                     }
                     else
                     {
                         echo "Błąd otwarcia strony";
                     }
                 }
+            }
         ?>
     <br>
     </body>

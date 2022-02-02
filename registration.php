@@ -88,9 +88,13 @@
             <input type="reset" value="Wyczyść dane">
 
         </form>
-
+        <form action="login.php" method="GET">
+            <label for="login">Masz już konto? Zaloguj się!</label><br>
+            <input id="login" type="submit" value="Strona logowania">
+        </form>
         <form action="index.php" method="GET">
-            <input type="submit" value="Strona główna">
+            <label for="mainsite">Powrót na stronę główną </label><br>
+            <input id="mainsite" type="submit" value="Strona główna">
         </form>
     </body>
 </html>

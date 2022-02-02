@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION["email"])){
+    header("Location: https://time.tea-it.pl/login.php");
+    exit();
+}
+$email = $_SESSION["email"];
 class Summary_private {
   private $week;
   private $month;
@@ -25,7 +31,7 @@ class Summary_private {
     //====================
     //====================
     $email = $_GET['email_'];
-    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '$email'";
+    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
     $id_uzytkownik_ = $rowData["id_uzytkownik"];
@@ -33,14 +39,14 @@ class Summary_private {
     //====================
     //====================
 
-    $query = "select czas_start, czas_stop, id_uzytkownik from czas_pracy WHERE czas_start between date_sub(now(),INTERVAL 1 WEEK) and now();";
+    $query = "select czas_start, czas_stop, id_uzytkownik from czas_pracy WHERE id_uzytkownik='{$id_uzytkownik_}' AND czas_start between date_sub(now(),INTERVAL 1 WEEK) and now();";
     $result = $mysqli->query($query);
     $sum = 0;
     while ($row = $result->fetch_assoc()) {
-      if ($row["id_uzytkownik"]==$id_uzytkownik_)
-      {
-        $sum += floor((strtotime($row["czas_stop"]) - strtotime($row["czas_start"])) / 3600);
-      }
+      // if ($row["id_uzytkownik"]==$id_uzytkownik_)
+      // {
+      $sum += floor((strtotime($row["czas_stop"]) - strtotime($row["czas_start"])) / 3600);
+      // }
     }
 
     $result -> free_result();
@@ -62,21 +68,21 @@ class Summary_private {
     //====================
     //====================
     $email = $_GET['email_'];
-    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '$email'";
+    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
     $id_uzytkownik_ = $rowData["id_uzytkownik"];
     //====================
     //====================
     //====================
-    $query = "select czas_start, czas_stop from czas_pracy WHERE czas_start between date_sub(now(),INTERVAL 1 MONTH) and now();";
+    $query = "select czas_start, czas_stop from czas_pracy WHERE id_uzytkownik='{$id_uzytkownik_}' AND czas_start between date_sub(now(),INTERVAL 1 MONTH) and now();";
     $result = $mysqli->query($query);
     $sum = 0;
     while ($row = $result->fetch_assoc()) {
-      if ($row["id_uzytkownik"]==$id_uzytkownik_)
-      {
+      // if ($row["id_uzytkownik"]==$id_uzytkownik_)
+      // {
         $sum += floor((strtotime($row["czas_stop"]) - strtotime($row["czas_start"])) / 3600);
-      }
+      // }
     }
     $result -> free_result();
     $mysqli -> close();
@@ -97,21 +103,21 @@ class Summary_private {
     //====================
     //====================
     $email = $_GET['email_'];
-    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '$email'";
+    $query_id_user = "SELECT id_uzytkownik FROM uzytkownik WHERE email = '{$email}'";
     $resultAll = mysqli_query($mysqli, $query_id_user);
     $rowData = mysqli_fetch_array($resultAll);
     $id_uzytkownik_ = $rowData["id_uzytkownik"];
     //====================
     //====================
     //====================
-    $query = "select czas_start, czas_stop from czas_pracy WHERE czas_start between date_sub(now(),INTERVAL 1 YEAR) and now();";
+    $query = "select czas_start, czas_stop from czas_pracy WHERE id_uzytkownik='{$id_uzytkownik_}' AND czas_start between date_sub(now(),INTERVAL 1 YEAR) and now();";
     $result = $mysqli->query($query);
     $sum = 0;
     while ($row = $result->fetch_assoc()) {
-      if ($row["id_uzytkownik"]==$id_uzytkownik_)
-      {
+      // if ($row["id_uzytkownik"]==$id_uzytkownik_)
+      // {
         $sum += floor((strtotime($row["czas_stop"]) - strtotime($row["czas_start"])) / 3600);
-      }
+      // }
     }
     
     $result -> free_result();

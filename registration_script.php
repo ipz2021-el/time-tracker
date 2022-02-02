@@ -115,6 +115,7 @@
             }
             else
             {
+                // Tu lepiej dać header("Location: https://time.tea-it.pl/registration.php?[tu lista parametrow bez hasla]") z parametrami a na registration.php wpisac je do pól
                 echo " Hasla sa rózne.";
                 echo " Podaj ponownie haslo.";
                 include 'registration.php';
