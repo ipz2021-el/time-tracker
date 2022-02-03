@@ -26,10 +26,12 @@
 				
 				if(mail($to_add,$subject,$message,$headers)) 
 				{
+					echo "tak";
 					return true;
 				} 
 				else 
 				{
+					echo "nie";
 					return false;
 				}
 			}

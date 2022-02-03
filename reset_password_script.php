@@ -75,7 +75,7 @@
                                     if(mysqli_query($conn, $sql_temp))
                                     {
                                         
-                                        if ($send_email -> send_email($email, $haslo_temp))
+                                        if ($send_email -> send_mail($email, $haslo_temp))
                                         {
                                             echo "Zresetowano haslo. Sprawdz pocztę email.";
                                         }
