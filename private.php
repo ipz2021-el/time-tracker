@@ -149,7 +149,7 @@
                         exit();
                     }
                     $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa='" . $_POST["fproject"] . "'";
-                    echo "sql: " . $sql_projekt;
+                    echo " sql: " . $sql_projekt;
                     $result = $mysqli->query($sql_projekt);
                     if($result->num_rows === 0)
                     {
@@ -203,7 +203,7 @@
                             $presult = $pmysqli->query($psql_projekt);
                             if($presult->num_rows === 0)
                             {
-                                echo 'No result';
+                                echo 'pppNo result';
                             }
                             else
                             {
