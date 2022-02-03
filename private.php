@@ -131,7 +131,7 @@
         <?php
             if (isset($_POST["findbnt"])){
                 echo "szukamy";
-                
+                $query = "select * from czas_pracy WHERE id_uzytkownik=" . $_SESSION['idu'];
                 if (isset($_POST["fstarttime"])){
                     $fstarttime = " and czas_start LIKE '%" . $_POST['fstarttime'] . "%'";
                 }else{
@@ -167,14 +167,13 @@
                 }else{
                     $fproject = '';
                 }                
-                $query = "select * from czas_pracy WHERE id_uzytkownik=" . $_SESSION['idu'];
-                if(!empty($fstarttime)){
+                if(!empty($_POST["fstarttime"])){
                     $query .= $fstarttime;
                 }
-                if(!empty($fstoptime)){
+                if(!empty($_POST["fstoptime"])){
                     $query .= $fstoptime;
                 }
-                if(!empty($fproject)){
+                if(!empty($_POST["fproject"])){
                     $query .= $fproject;
                 }
                 $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
