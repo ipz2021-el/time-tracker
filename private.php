@@ -51,7 +51,7 @@
                 <select id="project" name="project">
                     <option value="project">Bez projektu</option>
                 <?php
-                    echo var_dump($summary_private->projects);
+                    echo var_dump($summary_private);
                     foreach ($summary_private->projects as $item){
                         echo "<option value='" . $item . "'>" . $item . "</option>";
                     }
