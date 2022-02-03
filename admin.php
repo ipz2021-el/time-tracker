@@ -104,8 +104,8 @@
                             fputcsv($output, $row);
                         }
                     }
-                    $presult -> free_result();
-                    $pmysqli -> close();
+                    $result -> free_result();
+                    $mysqli -> close();
                 }
             ?>
         </div>
