@@ -24,8 +24,21 @@
 	<script src="lproject.js"></script>
 </head>
 <body>
+    <?php
+        if (isset($_GET["ans"])){
+            echo "<p>" . $_GET["ans"] . "</p>";
+        }
+    ?>
+    <div id="banner">
+        <!-- do zmiany na cos ladniejszego -->
+        <H1>CLOCKER</H1>
+        <?php
+            echo "<H2>Witaj w panelu admina " . $_SESSION["name"] . "</H2>";
+        ?>
+    </div>
     <div id="admin">
         <div id="del">
+            <h3>Usuń użytkownika</h3>
             <form method="get" action="">
                 <label for="email">Podaj email: </label><br>
                 <input type="email" id="email" name="delemail" placeholder="jan@kowalski.pl">
@@ -53,9 +66,9 @@
         </div>
 
         <div id="csv">
-            
+            <h3>Wygeneruj plik CSV</h3>
             <form method="get" action="">
-                <button type="submit" name="delbnt">CSV</button>
+                <button type="submit" name="csvbnt">CSV</button>
             </form>
             <?php
                 if (isset($_POST["csvbnt"])){
