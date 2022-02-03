@@ -189,7 +189,7 @@
                     while($row = $result->fetch_assoc()) {
 
                         echo "idprioj: " . $row["id_projekt"];
-                        if(empty($_POST["fproject"])){
+                        if(!empty($_POST["fproject"])){
                         // if (isset($_POST["fproject"])){
                             echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }else{
