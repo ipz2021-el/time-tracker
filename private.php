@@ -192,6 +192,28 @@
                         if (isset($_POST["fproject"])){
                             echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }else{
+                            $pmysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                            if ($pmysqli -> connect_errno) {
+                                echo "Failed to connect to MySQL: " . $pmysqli -> connect_error;
+                                exit();
+                            }
+                            $psql_projekt = "SELECT nazwa FROM projekt WHERE id_projekt='" . $row["id_projekt"] . "'";
+                            echo "sql: " . $psql_projekt;
+                            $presult = $pmysqli->query($psql_projekt);
+                            if($presult->num_rows === 0)
+                            {
+                                echo 'No result';
+                                $fprojectname = '';
+                            }
+                            else
+                            {
+                                if ($prow = $presult->fetch_assoc()) {
+                                    $fprojectname = " and id_projekt=" . $row["id_projekt"];
+                                    echo "<p>" . $prow["nazwa"] . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
+                                }
+                            }
+                            $presult -> free_result();
+                            $pmysqli -> close();
                             echo "<p>" . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }
                     }
