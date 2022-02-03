@@ -22,7 +22,7 @@
 	<script src="lproject.js"></script>
 </head>
 <body>
-<div id="banner">
+    <div id="banner">
         <!-- do zmiany na cos ladniejszego -->
         <H1>CLOCKER</H1>
         <?php
@@ -31,8 +31,31 @@
 
     </div>
 	<div id="buttons">
-        <form method="get" action="add_time.php">
-            <input type="hidden" value="<?php echo $email; ?>" name="email__"/>  
+        <form action="add_time_script.php" method="POST">
+        <!-- <form method="get" action="add_time.php"> -->
+            <div class="oneinput">
+                <label for="start">Start</label>
+                <input type="datetime-local" id="start" name="starttime">
+            </div>
+            <div class="oneinput">
+                <label for="stop">Stop</label>
+                <input type="datetime-local" id="stop" name="stoptime">
+            </div>
+            <div class="oneinput">
+                <label for="project">Wybierz projekt:</label>
+                <select id="project" name="project">
+                    <option value="project">Bez projektu</option>
+                <?php
+                    foreach ($summary_private->projects as $item){
+                        echo "<option value='" . $item . "'>" . $item . "</option>";
+                    }
+                ?>
+                </select>
+            </div>
+            <div class="oneinput">
+                <label for="notatka_">Opis czynności: </label><br>
+                <input type="text" id="notatka" name="notatka_" placeholder="Wykonałem zadnie....">
+            </div>
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
 
@@ -45,12 +68,17 @@
             <button type="submit">Usuń konto</button>
         </form>
 
+        <form method="get" action="change_pass.php">
+            <!-- tu haslo -->
+            <button type="submit">Zmień hasło</button>
+        </form>
+
         <form method="get" action="show_time.php">
             <button type="submit">Wyświetl czas pracy</button>
         </form>
 
         <form action="index.php" method="GET">
-            <input type="submit" value="Strona główna">
+            <button type='submit'>Strona główna</button>
         </form>
     </div>
    
@@ -69,6 +97,93 @@
             <p>W tym roku przepracowałeś <?php echo $summary_private->get_year($email) ?> godzin</p>
         </div>
         <div class="summ_private">
+    </div>
+    <div id="find">
+        <form method="POST" action="">
+        <div class="oneinput">
+                <label for="fstart">Start</label>
+                <input type="datetime-local" id="fstart" name="fstarttime">
+            </div>
+            <div class="oneinput">
+                <label for="fstop">Stop</label>
+                <input type="datetime-local" id="fstop" name="fstoptime">
+            </div>
+            <div class="oneinput">
+                <label for="fproject">Wybierz projekt:</label>
+                <select id="fproject" name="fproject">
+                    <option value="">Bez projektu</option>
+                <?php
+                    foreach ($summary_private->projects as $item){
+                        echo "<option value='" . $item . "'>" . $item . "</option>";
+                    }
+                    $result -> free_result();
+                    $mysqli -> close();
+                ?>
+                </select>
+            </div>
+            <button type="submit" name="findbnt">Znajdz zalogowany czas</button>
+        </form>
+        <?php
+            if (isset($_POST["findbnt"])){
+                $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                if ($mysqli -> connect_errno) {
+                    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                    exit();
+                }
+                if (isset($_POST["fstarttime"])){
+                    $fstarttime = " and czas_start LIKE '%" . $_POST['fstarttime'] . "%'";
+                }else{
+                    $fstarttime = '';
+                }
+                if (isset($_POST["fstoptime"])){
+                    $fstoptime = " and czas_stop LIKE '%" . $_POST['fstoptime'] . "%'";
+                }else{
+                    $fstoptime = '';
+                }
+                if (isset($_POST["fproject"])){
+                    $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa =" . $_POST["fproject"];
+                    $result = $mysqli->query($sql_projekt);
+                    if($result->num_rows === 0)
+                    {
+                        echo 'No result';
+                        $fproject = '';
+                    }
+                    else
+                    {
+                        if ($row = $result->fetch_assoc()) {
+                            $fproject = " and id_projekt=" . $row["id_projekt"];
+                        }
+                    }
+                    $result -> free_result();
+                }else{
+                    $fproject = '';
+                }                
+                $query = "select * from czas_pracy WHERE id_uzytkownik=" . $_SESSION['idu'];
+                if(!empty($fstarttime)){
+                    $query .= $fstarttime;
+                }
+                if(!empty($fstoptime)){
+                    $query .= $fstoptime;
+                }
+                if(!empty($fproject)){
+                    $query .= $fproject;
+                }
+                $result = $mysqli->query($query);
+                if($result->num_rows === 0)
+                {
+                    echo "<p>Znaleziono:</p>";
+                    while($row = $result->fetch_row()) {
+                        if (isset($_POST["fproject"])){
+                            echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
+                        }else{
+                            echo "<p>" . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
+                        }
+                    }
+                }
+                $result -> free_result();
+                $mysqli -> close();
+            }
+        ?>
     </div>
 </body>
 </html>

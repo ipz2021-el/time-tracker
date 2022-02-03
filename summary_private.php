@@ -9,11 +9,28 @@ class Summary_private {
   private $week;
   private $month;
   private $year;
+  public $projects;
 
   function __construct($email) {
     // require_once(__DIR__ . '/db.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
     $this->set_vars($email); 
+    $this->projects = [];
+  }
+
+  function set_projects() {
+    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+    if ($mysqli -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+      exit();
+    }
+    $query = "select name from projekt;";
+    $result = $mysqli->query($query);
+    while($row = $result->fetch_row()) {
+      $this->projects[] = $row;
+    }
+    $result -> free_result();
+    $mysqli -> close();
   }
 
   
