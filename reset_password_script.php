@@ -28,6 +28,7 @@
             $haslo_temp = strval(rand(100000,999999));
             $sql_up = "UPDATE uzytkownik SET haslo = '{$haslo_temp}' WHERE email = '{$email}'";
             //UPDATE table_name SET column1 = value1, column2 = value2 WHERE id=100;
+            echo "update";
             if(mysqli_query($conn, $sql_up))
             {
                 // mail
