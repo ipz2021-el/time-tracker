@@ -182,11 +182,14 @@
                     echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                     exit();
                 }
+                echo "query: " . $query;
                 $result = $mysqli->query($query);
                 if($result->num_rows > 0)
                 {
                     echo "<p>Znaleziono:</p>";
                     while($row = $result->fetch_row()) {
+
+                        echo $row;
                         if (isset($_POST["fproject"])){
                             echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }else{
