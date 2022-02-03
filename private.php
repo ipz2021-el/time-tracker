@@ -188,7 +188,7 @@
                     echo "<p>Znaleziono:</p>";
                     while($row = $result->fetch_assoc()) {
 
-                        echo $row;
+                        echo "idprioj: " . $row["id_projekt"];
                         if (isset($_POST["fproject"])){
                             echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }else{
@@ -198,17 +198,15 @@
                                 exit();
                             }
                             $psql_projekt = "SELECT nazwa FROM projekt WHERE id_projekt='" . $row["id_projekt"] . "'";
-                            echo "sql: " . $psql_projekt;
+                            echo " psql: " . $psql_projekt;
                             $presult = $pmysqli->query($psql_projekt);
                             if($presult->num_rows === 0)
                             {
                                 echo 'No result';
-                                $fprojectname = '';
                             }
                             else
                             {
                                 if ($prow = $presult->fetch_assoc()) {
-                                    $fprojectname = " and id_projekt=" . $row["id_projekt"];
                                     echo "<p>" . $prow["nazwa"] . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                                 }
                             }
