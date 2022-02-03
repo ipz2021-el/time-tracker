@@ -186,7 +186,7 @@
                 if($result->num_rows > 0)
                 {
                     echo "<p>Znaleziono:</p>";
-                    while($row = $result->fetch_row()) {
+                    while($row = $result->fetch_assoc()) {
 
                         echo $row;
                         if (isset($_POST["fproject"])){
