@@ -37,8 +37,7 @@
     </div>
 	<div id="admind">
         <?php
-            echo "idu" . $_SESSION['idu'];
-            if (isset($_SESSION['idu']) && $_SESSION['idu'] == '2'){
+            if (isset($_SESSION['idr']) && $_SESSION['idr'] == 2){
                 echo "</form>";
                 echo "<form method='get' action='admin.php'>";
                 echo "<button type='submit'>Admin panel</button>";
