@@ -34,9 +34,22 @@
         <?php
             echo "<H2>Witaj " . $_SESSION["name"] . "</H2>";
         ?>
-
     </div>
 	<div id="buttons">
+        <?php
+            if (isset($_SESSION['idu']) && $_SESSION['idu'] === 2){
+                echo "</form>";
+                echo "<form method='get' action='admin.php'>";
+                echo "<button type='submit'>Admin panel</button>";
+                echo "</form>";
+            }
+        ?>
+        <form method='get' action='logout.php'>
+            <button type='submit'>Wyloguj</button>
+        </form>
+        <form action="index.php" method="GET">
+            <button type='submit'>Strona główna</button>
+        </form>
         <form action="add_time_script.php" method="POST">
         <!-- <form method="get" action="add_time.php"> -->
             <div class="oneinput">
@@ -65,32 +78,28 @@
             </div>
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
-
-        <form method='get' action='logout.php'>
-            <button type='submit'>Wyloguj</button>
-        </form>
-
-        <form method="get" action="delete_user.php">
-            <input type="hidden" value="<?php echo $email; ?>" name="email__"/>  
-            <button type="submit">Usuń konto</button>
-        </form>
-
-        <form method="get" action="change_pass.php">
-            <!-- tu haslo -->
+        <form method="POST" action="change_pass.php">
+            <div class="oneinput">
+                <label for="haslo1">Podaj haslo: </label><br>
+                <input type="password" id="haslo1" name="haslo1_" placeholder="haslo123!">
+                <div id="message">
+                <h3>Hasło musi zawierać:</h3>
+                <p id="letter" class="invalid">Przynajmniej 1 małą literę</p>
+                <p id="capital" class="invalid">Przynajmniej 1 wielką literę</p>
+                <p id="number" class="invalid">Przynajmniej 1 cyfrę</p>
+                <p id="special_char" class="invalid">Przynajmniej 1 znak specjalny</p>
+                <p id="length" class="invalid">Minimum 8 znaków</p>
+                </div>
+            </div>
+            <div class="oneinput">
+                <label for="haslo2">Powtórz haslo: </label><br>
+                <input type="password" id="haslo2" name="haslo2_" placeholder="haslo123!">
+            </div>
             <button type="submit">Zmień hasło</button>
-        </form>
-
-        <form method="get" action="show_time.php">
-            <button type="submit">Wyświetl czas pracy</button>
-        </form>
-
-        <form action="index.php" method="GET">
-            <button type='submit'>Strona główna</button>
         </form>
     </div>
    
 	<div id="summary_private">
-       
         <div class="summ_private">
         <img src="week.png" alt="Week">
             <p>W tym tygodniu przepracowałeś <?php echo $summary_private->get_week($email) ?> godzin</p>
@@ -105,6 +114,7 @@
         </div>
         <div class="summ_private">
     </div>
+
     <div id="find">
         <form method="POST" action="">
         <div class="oneinput">
@@ -130,7 +140,6 @@
         </form>
         <?php
             if (isset($_POST["findbnt"])){
-                echo "szukamy";
                 $query = "select * from czas_pracy WHERE id_uzytkownik=" . $_SESSION['idu'];
                 if (isset($_POST["fstarttime"])){
                     $fstarttime = " and czas_start LIKE '%" . $_POST['fstarttime'] . "%'";
@@ -149,11 +158,9 @@
                         exit();
                     }
                     $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa='" . $_POST["fproject"] . "'";
-                    echo " sql: " . $sql_projekt;
                     $result = $mysqli->query($sql_projekt);
                     if($result->num_rows === 0)
                     {
-                        echo 'oooNo result';
                         $fproject = '';
                     }
                     else
@@ -181,16 +188,13 @@
                     echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                     exit();
                 }
-                echo "query: " . $query;
                 $result = $mysqli->query($query);
                 if($result->num_rows > 0)
                 {
                     echo "<p>Znaleziono:</p>";
                     while($row = $result->fetch_assoc()) {
 
-                        echo "idprioj: " . $row["id_projekt"];
                         if(!empty($_POST["fproject"])){
-                        // if (isset($_POST["fproject"])){
                             echo "<p>" . $_POST["fproject"] . " " . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }else{
                             $pmysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
@@ -199,11 +203,10 @@
                                 exit();
                             }
                             $psql_projekt = "SELECT nazwa FROM projekt WHERE id_projekt='" . $row["id_projekt"] . "'";
-                            echo " psql: " . $psql_projekt;
                             $presult = $pmysqli->query($psql_projekt);
                             if($presult->num_rows === 0)
                             {
-                                echo 'pppNo result';
+                                echo 'No result';
                             }
                             else
                             {
@@ -213,7 +216,6 @@
                             }
                             $presult -> free_result();
                             $pmysqli -> close();
-                            echo "<p>" . $row["czas_start"] . " " . $row["czas_stop"] . " " . $row["notatka"] . "</p>";
                         }
                     }
                 }
