@@ -36,6 +36,17 @@
             echo "<H2>Witaj w panelu admina " . $_SESSION["name"] . "</H2>";
         ?>
     </div>
+    <div id="bnts">
+        <form method='get' action='logout.php'>
+            <button type='submit'>Wyloguj</button>
+        </form>
+        <form method='get' action='private.php'>
+            <button type='submit'>Moja strona</button>
+        </form>
+        <form action="index.php" method="GET">
+            <button type='submit'>Strona główna</button>
+        </form>
+    </div>
     <div id="admin">
         <div id="del">
             <h3>Usuń użytkownika</h3>
@@ -54,11 +65,11 @@
                     $sql = "DELETE FROM uzytkownik WHERE email='" . $_GET["delemail"] . "'";
                     if($mysqli->query($sql) === TRUE)
                     {
-                        echo "Konto " . $_GET["delemail"] . " zostało usunięte.";
+                        echo "<p>Konto " . $_GET["delemail"] . " zostało usunięte.</p>";
                     }
                     else
                     {
-                        echo "Error deleting record: " . $conn->error;
+                        echo "<p>Error deleting record: " . $conn->error . "</p>";
                     }
                     $pmysqli -> close();
                 }
@@ -67,11 +78,11 @@
 
         <div id="csv">
             <h3>Wygeneruj plik CSV</h3>
-            <form method="get" action="">
+            <form method="GET" action="">
                 <button type="submit" name="csvbnt">CSV</button>
             </form>
             <?php
-                if (isset($_POST["csvbnt"])){
+                if (isset($_GET["csvbnt"])){
                     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
                     if ($mysqli -> connect_errno) {
                         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
