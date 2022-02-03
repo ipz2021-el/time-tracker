@@ -183,7 +183,7 @@
                     exit();
                 }
                 $result = $mysqli->query($query);
-                if($result->num_rows === 0)
+                if($result->num_rows > 0)
                 {
                     echo "<p>Znaleziono:</p>";
                     while($row = $result->fetch_row()) {
