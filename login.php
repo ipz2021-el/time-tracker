@@ -8,7 +8,7 @@
 
     <body>
         <?php
-            if (!isset($_GET["ans"])){
+            if (isset($_GET["ans"])){
                 echo "<p>" . $_GET["ans"] . "</p>";
             }
         ?>
