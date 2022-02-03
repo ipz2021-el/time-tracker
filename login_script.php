@@ -83,8 +83,8 @@
                         {
                             // Tu lepiej dać header("Location: https://time.tea-it.pl/login.php?[tu parametr z info ze sie nie udalo]") 
                             // opcjonalnie z parametram email do wpisania do póla
-                            echo "Podano nieprawidlowe dane.";
-                            header("Location: https://time.tea-it.pl/login.php?email={$email}");
+                            $ans = "Podano nieprawidłowe dane.";
+                            header("Location: https://time.tea-it.pl/login.php?ans={$ans}");
                             exit;
                         }
                         else

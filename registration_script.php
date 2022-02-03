@@ -98,9 +98,9 @@
                     
                     if(mysqli_query($conn, $sql))
                     {
-                        // echo "Dodano uytkownika.";
+                        $ans = "Dodano uytkownika" . $email;
                         // include 'login.php';
-                        header("Location: https://time.tea-it.pl/login.php");
+                        header("Location: https://time.tea-it.pl/login.php?ans={$ans}");
                         exit;
                         
                     }
