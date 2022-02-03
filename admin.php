@@ -78,36 +78,17 @@
 
         <div id="csv">
             <h3>Wygeneruj plik CSV</h3>
-            <form method="GET" action="">
-                <button type="submit" name="csvbnt">CSV</button>
-            </form>
-            <?php
-                if (isset($_GET["csvbnt"])){
-                    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
-                    if ($mysqli -> connect_errno) {
-                        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-                        exit();
+            <button onclick="Export()" name="csvbnt">Export to CSV File</button>
+            <script>
+                function Export()
+                {
+                    var conf = confirm("Eksportować do CSV?");
+                    if(conf == true)
+                    {
+                        window.open("csv.php", '_blank');
                     }
-                    $query = "SELECT * FROM czas_pracy";
-                    $times = array();
-                    $result = $mysqli->query($query);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $times[] = $row;
-                    }
-                    header('Content-Type: text/csv; charset=utf-8');
-                    header('Content-Disposition: attachment; filename=times.csv');
-                    $output = fopen('php://output', 'w');
-                    fputcsv($output, array('ID', 'Start', 'Stop', 'Note', 'IDuser', 'IDproject'));
-
-                    if (count($times) > 0) {
-                        foreach ($times as $row) {
-                            fputcsv($output, $row);
-                        }
-                    }
-                    $result -> free_result();
-                    $mysqli -> close();
                 }
-            ?>
+            </script>
         </div>
     </div>
 </body>
