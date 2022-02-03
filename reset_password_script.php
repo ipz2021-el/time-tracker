@@ -5,12 +5,12 @@
     require dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'm.php';
 	require '/usr/share/php/libphp-phpmailer/class.phpmailer.php';
 	require '/usr/share/php/libphp-phpmailer/class.smtp.php';
-
+    echo "start";
 	$mail = new PHPMailer;
 	$mail->setFrom(muser);
 	$mail->addAddress($email);
 	$mail->Subject = 'Clocker - reset hasla';
-	$mail->Body = "Twoje haslo tymczasowe to: {$this->haslo}";
+	$mail->Body = "Twoje haslo tymczasowe to: {$haslo_temp}";
 	$mail->IsSMTP();
 	$mail->SMTPSecure = 'ssl';
 	$mail->Host = 'ssl://poczta.interia.pl';
