@@ -9,7 +9,7 @@
 			$this->haslo = $haslo; 
 		}
 
-		function send_email($email, $haslo) 
+		function send_mail($email, $haslo) 
 		{
 			// $msg="";
 			if($this->email)
