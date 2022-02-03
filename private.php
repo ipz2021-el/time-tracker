@@ -148,7 +148,7 @@
                         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                         exit();
                     }
-                    $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa =" . $_POST["fproject"];
+                    $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa='" . $_POST["fproject"] . "'";
                     echo "sql: " . $sql_projekt;
                     $result = $mysqli->query($sql_projekt);
                     if($result->num_rows === 0)
