@@ -16,8 +16,12 @@ class Summary_private {
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
     $this->set_vars($email); 
     $this->projects = array();
+    $this->set_projects();
   }
 
+  function get_projects() {
+    return $this->projects;
+  }
   function set_projects() {
     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
     if ($mysqli -> connect_errno) {
@@ -26,8 +30,8 @@ class Summary_private {
     }
     $query = "select nazwa from projekt;";
     $result = $mysqli->query($query);
-    while($row = $result->fetch_row()) {
-      $this->projects[] = $row;
+    while($row = $result->fetch_assoc()) {
+      $this->projects[] = $row["nazwa"];
     }
     $result -> free_result();
     $mysqli -> close();
