@@ -7,6 +7,11 @@
     </head>
 
     <body>
+        <?php
+            if (!isset($_GET["ans"])){
+                echo "<p>" . $_GET["ans"] . "</p>";
+            }
+        ?>
         <form action="login_script.php" onsubmit="return validate_login()" method="POST">
         
             <div id="banner_logowanie">
