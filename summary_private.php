@@ -24,7 +24,7 @@ class Summary_private {
       echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
       exit();
     }
-    $query = "select name from projekt;";
+    $query = "select nazwa from projekt;";
     $result = $mysqli->query($query);
     while($row = $result->fetch_row()) {
       $this->projects[] = $row;
