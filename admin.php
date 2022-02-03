@@ -62,16 +62,16 @@
                         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                         exit();
                     }
-                    $sql = "DELETE FROM uzytkownik WHERE email='" . $_GET["delemail"] . "'";
+                    $sql = "DELETE FROM uzytkownik WHERE email='" . $_POST["delemail"] . "'";
                     if($mysqli->query($sql) === TRUE)
                     {
-                        echo "<p>Konto " . $_GET["delemail"] . " zostało usunięte.</p>";
+                        echo "<p>Konto " . $_POST["delemail"] . " zostało usunięte.</p>";
                     }
                     else
                     {
                         echo "<p>Error deleting record: " . $conn->error . "</p>";
                     }
-                    $pmysqli -> close();
+                    $mysqli -> close();
                 }
             ?>
         </div>

@@ -35,7 +35,7 @@
             echo "<H2>Witaj " . $_SESSION["name"] . "</H2>";
         ?>
     </div>
-	<div id="admind">
+	<div id="btns">
         <?php
             if (isset($_SESSION['idr']) && $_SESSION['idr'] == 2){
                 echo "</form>";
