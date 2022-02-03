@@ -35,9 +35,10 @@
             echo "<H2>Witaj " . $_SESSION["name"] . "</H2>";
         ?>
     </div>
-	<div id="buttons">
+	<div id="admind">
         <?php
-            if (isset($_SESSION['idu']) && $_SESSION['idu'] === 2){
+            echo "idu" . $_SESSION['idu'];
+            if (isset($_SESSION['idu']) && $_SESSION['idu'] == '2'){
                 echo "</form>";
                 echo "<form method='get' action='admin.php'>";
                 echo "<button type='submit'>Admin panel</button>";
@@ -50,6 +51,9 @@
         <form action="index.php" method="GET">
             <button type='submit'>Strona główna</button>
         </form>
+    </div>
+    <div>
+        <h3>Zaloguj czas pracy</h3>
         <form action="add_time_script.php" method="POST">
         <!-- <form method="get" action="add_time.php"> -->
             <div class="oneinput">
@@ -78,6 +82,9 @@
             </div>
             <button type="submit">Dodaj pozycje czasu pracy</button>
         </form>
+    </div>
+    <div>
+        <h3>Zmień hasło</h3>
         <form method="POST" action="change_pass.php">
             <div class="oneinput">
                 <label for="haslo1">Podaj haslo: </label><br>
@@ -100,6 +107,7 @@
     </div>
    
 	<div id="summary_private">
+        <h3>Twoje podsumowanie</h3>
         <div class="summ_private">
         <img src="week.png" alt="Week">
             <p>W tym tygodniu przepracowałeś <?php echo $summary_private->get_week($email) ?> godzin</p>
@@ -116,6 +124,7 @@
     </div>
 
     <div id="find">
+        <h3>Wyszukaj</h3>
         <form method="POST" action="">
         <div class="oneinput">
                 <label for="fstart">Start</label>
