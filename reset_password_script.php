@@ -12,6 +12,7 @@
     }
     echo " wysylka";
     $send_email = new send_email($email, $haslo_temp);
+    $send_email->send_email()
     echo "po";
 ?>
 

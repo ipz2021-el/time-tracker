@@ -1,22 +1,26 @@
 <?php
 	class send_email 
 	{
+		private $email;
+  		private $haslo; 
+
+		function __construct($email, $haslo) {
+			$this->email = $email;
+			$this->haslo = $haslo; 
+		}
+
 		function send_email($email, $haslo) 
 		{
-			$msg="";
-			if($email)
+			// $msg="";
+			if($this->email)
 			{
-
 				$from_add = "aplikacjeinternetowe2022@gmail.com"; 
-
-				$to_add = '$email)';
-
+				$to_add = "{$this->email}";
 				$subject = "Clocker - reset hasla" ;
-				$message = "Twoje haslo tymczasowe to: $haslo" ;
-				
-				$headers = "From: $from_add \r\n";
-				$headers .= "Reply-To: $from_add \r\n";
-				$headers .= "Return-Path: $from_add\r\n";
+				$message = "Twoje haslo tymczasowe to: {$this->haslo}" ;
+				$headers = "From: {$from_add} \r\n";
+				$headers .= "Reply-To: {$from_add} \r\n";
+				$headers .= "Return-Path: {$from_add}\r\n";
 				$headers .= "X-Mailer: PHP \r\n";
 				
 				
