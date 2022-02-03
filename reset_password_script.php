@@ -1,19 +1,47 @@
 <?php
     $haslo_temp = "Try1234!";
     $email = $_GET['email_'];
-    require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
-    if ( function_exists( 'mail' ) )
-    {
-        echo 'mail() is available';
-    }
-    else
-    {
-        echo 'mail() has been disabled';
-    }
-    echo " wysylka";
-    $send_email = new send_email($email, $haslo_temp);
-    $send_email->send_mail();
-    echo "po";
+
+    require dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'm.php';
+	require '/usr/share/php/libphp-phpmailer/class.phpmailer.php';
+	require '/usr/share/php/libphp-phpmailer/class.smtp.php';
+
+	$mail = new PHPMailer;
+	$mail->setFrom(muser);
+	$mail->addAddress($email);
+	$mail->Subject = 'Clocker - reset hasla';
+	$mail->Body = "Twoje haslo tymczasowe to: {$this->haslo}";
+	$mail->IsSMTP();
+	$mail->SMTPSecure = 'ssl';
+	$mail->Host = 'ssl://poczta.interia.pl';
+	$mail->SMTPAuth = true;
+	$mail->Port = 465;
+
+	//Set your existing gmail address as user name
+	$mail->Username = muser;
+
+	//Set the password of your gmail address here
+	$mail->Password = mpass;
+	if(!$mail->send()) {
+	echo 'Email is not sent.';
+	echo 'Email error: ' . $mail->ErrorInfo;
+	} else {
+	echo 'Email has been sent.';
+	}
+
+    // require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'email_script.php';
+    // if ( function_exists( 'mail' ) )
+    // {
+    //     echo 'mail() is available';
+    // }
+    // else
+    // {
+    //     echo 'mail() has been disabled';
+    // }
+    // echo " wysylka";
+    // $send_email = new send_email($email, $haslo_temp);
+    // $send_email->send_mail();
+    // echo "po";
 ?>
 
 
