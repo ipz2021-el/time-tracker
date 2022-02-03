@@ -131,11 +131,7 @@
         <?php
             if (isset($_POST["findbnt"])){
                 echo "szukamy";
-                $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
-                if ($mysqli -> connect_errno) {
-                    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-                    exit();
-                }
+                
                 if (isset($_POST["fstarttime"])){
                     $fstarttime = " and czas_start LIKE '%" . $_POST['fstarttime'] . "%'";
                 }else{
@@ -147,7 +143,13 @@
                     $fstoptime = '';
                 }
                 if (isset($_POST["fproject"])){
+                    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                    if ($mysqli -> connect_errno) {
+                        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                        exit();
+                    }
                     $sql_projekt = "SELECT id_projekt FROM projekt WHERE nazwa =" . $_POST["fproject"];
+                    echo "sql: " . $sql_projekt;
                     $result = $mysqli->query($sql_projekt);
                     if($result->num_rows === 0)
                     {
@@ -161,6 +163,7 @@
                         }
                     }
                     $result -> free_result();
+                    $mysqli -> close();
                 }else{
                     $fproject = '';
                 }                
@@ -173,6 +176,11 @@
                 }
                 if(!empty($fproject)){
                     $query .= $fproject;
+                }
+                $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                if ($mysqli -> connect_errno) {
+                    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                    exit();
                 }
                 $result = $mysqli->query($query);
                 if($result->num_rows === 0)
