@@ -23,7 +23,7 @@
             echo "row" . $row["email"];
         }
         $result -> free_result();
-        if ($temp_email == $email)
+        if ($email == $row["email"])
         {
             $haslo_temp = strval(rand(100000,999999));
             $sql_up = "UPDATE uzytkownik SET haslo = '{$haslo_temp}' WHERE email = '{$email}'";
