@@ -50,17 +50,17 @@
             $sql_add_time = "INSERT INTO czas_pracy (czas_start, czas_stop, notatka, id_uzytkownik, id_projekt) VALUES ('$starttime', '$stoptime', '$notatka', '$id_uzytkownik', '$id_projekt')";
             if ($mysqli->query($sql_add_time))
             {
-                echo "Dodano czas pracy.";
+                $ans = "Dodano czas pracy.";
             }
             else
             {
-                echo "Nie dodano czasu pracy.";
+                $ans = "Nie dodano czasu pracy.";
             }                  
             $mysqli -> close();
             if(file_exists("private.php")) 
             {
                 // include 'private.php';
-                header("Location: https://time.tea-it.pl/private.php");
+                header("Location: https://time.tea-it.pl/private.php?ans={$ans}");
                 exit;
             }
         ?>

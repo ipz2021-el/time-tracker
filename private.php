@@ -22,6 +22,11 @@
 	<script src="lproject.js"></script>
 </head>
 <body>
+    <?php
+        if (isset($_GET["ans"])){
+            echo "<p>" . $_GET["ans"] . "</p>";
+        }
+    ?>
     <div id="banner">
         <!-- do zmiany na cos ladniejszego -->
         <H1>CLOCKER</H1>
@@ -46,6 +51,7 @@
                 <select id="project" name="project">
                     <option value="project">Bez projektu</option>
                 <?php
+                    echo var_dump($summary_private->projects)
                     foreach ($summary_private->projects as $item){
                         echo "<option value='" . $item . "'>" . $item . "</option>";
                     }
@@ -116,8 +122,6 @@
                     foreach ($summary_private->projects as $item){
                         echo "<option value='" . $item . "'>" . $item . "</option>";
                     }
-                    $result -> free_result();
-                    $mysqli -> close();
                 ?>
                 </select>
             </div>
