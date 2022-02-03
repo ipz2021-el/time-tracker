@@ -142,7 +142,7 @@
                 }else{
                     $fstoptime = '';
                 }
-                if (isset($_POST["fproject"])){
+                if (!empty($_POST["fproject"])){
                     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
                     if ($mysqli -> connect_errno) {
                         echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
@@ -153,7 +153,7 @@
                     $result = $mysqli->query($sql_projekt);
                     if($result->num_rows === 0)
                     {
-                        echo 'No result';
+                        echo 'oooNo result';
                         $fproject = '';
                     }
                     else
