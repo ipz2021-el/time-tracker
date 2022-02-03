@@ -15,7 +15,7 @@ class Summary_private {
     // require_once(__DIR__ . '/db.php');
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
     $this->set_vars($email); 
-    $this->projects = [];
+    $this->projects = array();
   }
 
   function set_projects() {
