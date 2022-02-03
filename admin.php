@@ -39,7 +39,7 @@
     <div id="admin">
         <div id="del">
             <h3>Usuń użytkownika</h3>
-            <form method="get" action="">
+            <form method="POST" action="">
                 <label for="email">Podaj email: </label><br>
                 <input type="email" id="email" name="delemail" placeholder="jan@kowalski.pl">
                 <button type="submit" name="delbnt">Usuń konto</button>
