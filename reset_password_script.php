@@ -56,10 +56,10 @@
         } 
     }               
     $mysqli -> close();
-    if(file_exists("login.php")) 
-    {
-        // include 'private.php';
-        header("Location: https://time.tea-it.pl/login.php");
-        exit;
-    }
+    // if(file_exists("login.php")) 
+    // {
+    //     // include 'private.php';
+    //     header("Location: https://time.tea-it.pl/login.php");
+    //     exit;
+    // }
 ?>
