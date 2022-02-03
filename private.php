@@ -130,6 +130,7 @@
         </form>
         <?php
             if (isset($_POST["findbnt"])){
+                echo "szukamy";
                 $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
                 if ($mysqli -> connect_errno) {
                     echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
