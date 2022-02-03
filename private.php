@@ -109,11 +109,11 @@
         <form method="POST" action="">
         <div class="oneinput">
                 <label for="fstart">Start</label>
-                <input type="datetime-local" id="fstart" name="fstarttime">
+                <input type="date" id="fstart" name="fstarttime">
             </div>
             <div class="oneinput">
                 <label for="fstop">Stop</label>
-                <input type="datetime-local" id="fstop" name="fstoptime">
+                <input type="date" id="fstop" name="fstoptime">
             </div>
             <div class="oneinput">
                 <label for="fproject">Wybierz projekt:</label>
