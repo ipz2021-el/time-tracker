@@ -4,9 +4,9 @@
         header("Location: https://time.tea-it.pl/login.php");
         exit();
     }
-    $email = $_GET['email_'];
-    $haslo1 = $_GET['haslo1'];
-    $haslo2 = $_GET['haslo2'];
+    $email = $_POST['email_'];
+    $haslo1 = $_POST['haslo1'];
+    $haslo2 = $_POST['haslo2'];
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
 
     $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
@@ -17,9 +17,9 @@
     if ($haslo1 === $haslo2)
     {
         $sql_up = "UPDATE uzytkownik SET haslo = '{$haslo1}' WHERE email = '{$email}'";
-        if($mysqli->query($sql_up))
+        if($mysqli->query($sql_up) === TRUE)
         {
-            $ans = "hasło zostało zmienione.";
+            $ans = "Hasło zostało zmienione.";
         } else {
             $ans = "Zmiana hasła nie powiodła się.";
         }
