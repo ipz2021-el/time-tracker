@@ -4,7 +4,7 @@
         header("Location: https://time.tea-it.pl/login.php");
         exit();
     }
-    $email = $_POST['email_'];
+    $email = $_POST['email'];
     $haslo1 = $_POST['haslo1'];
     $haslo2 = $_POST['haslo2'];
     require_once dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'db.php';
