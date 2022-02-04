@@ -87,7 +87,7 @@
         <form method="POST" action="change_pass.php">
             <div class="oneinput">
                 <label for="haslo1">Podaj haslo: </label><br>
-                <input type="password" id="haslo1" name="haslo1_" placeholder="haslo123!">
+                <input type="password" id="haslo1" name="haslo1" placeholder="haslo123!">
                 <div id="message">
                 <h3>Hasło musi zawierać:</h3>
                 <p id="letter" class="invalid">Przynajmniej 1 małą literę</p>
@@ -99,7 +99,7 @@
             </div>
             <div class="oneinput">
                 <label for="haslo2">Powtórz haslo: </label><br>
-                <input type="password" id="haslo2" name="haslo2_" placeholder="haslo123!">
+                <input type="password" id="haslo2" name="haslo2" placeholder="haslo123!">
             </div>
             <button type="submit">Zmień hasło</button>
         </form>
