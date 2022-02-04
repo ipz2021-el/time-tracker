@@ -75,7 +75,42 @@
                 }
             ?>
         </div>
-
+        <div id="add_projekt">
+            <h3>Dodaj projekt</h3>
+            <form action="" method="POST">
+                <div class="oneinput">
+                    <label for="pname">Podaj nazwę projektu: </label><br>
+                    <input type="text" name="pname" placeholder="projekt 1">
+                </div>
+                    
+                <div class="oneinput">
+                    <label for="pdesc">Podaj opis projektu: </label><br>
+                    <input type="text" name="pdesc" placeholder="To jest projekt...">
+                </div>
+                <input type="submit" name="addpbnt" value="Dodaj projekt">
+                <input type="reset" value="Wyczyść dane">
+            </form>
+            <?php
+                if (isset($_POST["addpbnt"])){
+                    $mysqli = new mysqli(DBhost, DBuser, DBpass, DBname, DBport);
+                    if ($mysqli -> connect_errno) {
+                        echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                        exit();
+                    }
+                    $sql = "INSERT INTO projekt (nazwa, opis) VALUES ('" . $_POST["pname"] . "', '" . $_POST["pdesc"] . "')";
+                       
+                    if($mysqli->query($sql) === TRUE)
+                    {
+                        echo "<p>Projekt " . $_POST["pname"] . " został dodany.</p>";
+                    }
+                    else
+                    {
+                        echo "<p>Error deleting record: " . $conn->error . "</p>";
+                    }
+                    $mysqli -> close();
+                }
+            ?>
+        </div>
         <div id="csv">
             <h3>Wygeneruj plik CSV</h3>
             <button onclick="Export()" name="csvbnt">Export to CSV File</button>
